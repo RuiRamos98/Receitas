@@ -4,7 +4,6 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
     <string name="previous">Previous</string>
 
     <string name="lorem_ipsum">
@@ -43,4 +42,9 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="receitas">Receitas</string>
+    <string name="tipo_de_receitas">Tipo de Receitas</string>
+    <string name="pesquisar">Pesquisar</string>
+    <string name="sobre">Sobre</string>
+    <string name="rui_ramos_1704711">Rui Ramos 1704711</string>
 </resources>
