@@ -12,7 +12,9 @@ class BdReceitasOpenHelper(
     context: Context?,
 ) : SQLiteOpenHelper(context, NOME_BASE_DADOS, null, VERSAO_BASE_DADOS) {
     override fun onCreate(db: SQLiteDatabase?) {
-
+        requireNotNull(db)
+        TabelaTipoDeReceitas(db).cria()
+        TabelaReceitas(db).cria()
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
