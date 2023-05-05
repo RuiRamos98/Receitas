@@ -3,8 +3,10 @@ package com.example.receitas
 import android.content.ContentValues
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 
 abstract class TabelaBD(val db: SQLiteDatabase, val nome:String) {
+
     abstract fun cria()
 
     fun insere(valores: ContentValues) {
@@ -26,4 +28,7 @@ abstract class TabelaBD(val db: SQLiteDatabase, val nome:String) {
     fun eliminar(where: String, argsWhere: Array<String>)=
         db.delete(nome,where,argsWhere)
 
+    companion object{
+        const val CHAVE_TABELA="${ BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT"
+    }
 }
