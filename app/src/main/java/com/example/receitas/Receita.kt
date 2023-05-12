@@ -17,6 +17,5 @@ class Receita (
 
         return valores
     }
-
 }
 

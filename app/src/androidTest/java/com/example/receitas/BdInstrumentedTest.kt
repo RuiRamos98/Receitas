@@ -2,6 +2,7 @@ package com.example.receitas
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
@@ -43,6 +44,7 @@ class BdInstrumentedTest {
         assertNotEquals(-1,receita.id)
     }
 
+
     fun consegueInserirTipoDeReceita(){
         val bd = getWritableDataBase()
 
@@ -74,5 +76,35 @@ class BdInstrumentedTest {
         assertEquals("com.example.receitas", appContext.packageName)
     }
 
+    @Test
+    fun consegueLerTipoDeReceita(){
+        val bd=getWritableDataBase()
 
+        val tipoDeReceitaEntrada=TipoDeReceita("Entrada")
+        insereTipoDeReceita(bd,tipoDeReceitaEntrada)
+
+        val tipoDeReceitaSobremesa=TipoDeReceita("Sobremesa")
+        insereTipoDeReceita(bd,tipoDeReceitaSobremesa)
+
+        val cursor=TabelaReceitas(bd).consulta(TabelaTipoDeReceitas.CAMPOS,
+            "${BaseColumns._ID}=?",
+            arrayOf(tipoDeReceitaSobremesa.id.toString()),
+            null,
+            null,
+            null
+        )
+        assert(cursor.moveToNext())
+
+        val tipoReceitaBD=TipoDeReceita.fromCursor(cursor)
+
+        assertEquals(tipoDeReceitaSobremesa,tipoReceitaBD)
+
+        val cursorTodosTiposDeReceitas=TabelaTipoDeReceita.consulta(
+            TabelaTipoDeReceitas.CAMPOS,
+            null,null,null,null,
+            TabelaTipoDeReceitas.CAMPO_NOME
+        )
+
+        assert(cursorTodosTiposDeReceitas.count > 1)
+    }
 }

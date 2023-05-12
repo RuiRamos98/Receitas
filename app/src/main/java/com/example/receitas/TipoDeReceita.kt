@@ -1,6 +1,8 @@
 package com.example.receitas
 
 import android.content.ContentValues
+import android.database.Cursor
+import android.provider.BaseColumns
 
 data class TipoDeReceita(
     var nome:String,
@@ -13,5 +15,16 @@ data class TipoDeReceita(
 
 
         return valores
+    }
+    companion object{
+        fun fromCursor(cursor: Cursor):TipoDeReceita{
+            val posId =cursor.getColumnIndex(BaseColumns._ID)
+            val posNome =cursor.getColumnIndex(TabelaTipoDeReceitas.CAMPO_NOME)
+
+            val id=cursor.getLong(posId)
+            val nome=cursor.getString(posNome)
+
+            return TipoDeReceita(nome,id)
+        }
     }
 }
