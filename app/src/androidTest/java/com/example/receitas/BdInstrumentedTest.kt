@@ -99,7 +99,7 @@ class BdInstrumentedTest {
 
         assertEquals(tipoDeReceitaSobremesa,tipoReceitaBD)
 
-        val cursorTodosTiposDeReceitas=TabelaTipoDeReceita.consulta(
+        val cursorTodosTiposDeReceitas=TabelaTipoDeReceitas(bd).consulta(
             TabelaTipoDeReceitas.CAMPOS,
             null,null,null,null,
             TabelaTipoDeReceitas.CAMPO_NOME
