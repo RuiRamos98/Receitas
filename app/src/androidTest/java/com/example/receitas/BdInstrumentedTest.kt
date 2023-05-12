@@ -1,6 +1,7 @@
 package com.example.receitas
 
 import android.content.Context
+import android.database.sqlite.SQLiteDatabase
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
@@ -27,14 +28,41 @@ class BdInstrumentedTest {
         getAppContext().deleteDatabase(BdReceitasOpenHelper.NOME_BASE_DADOS)
     }
     @Test
-    fun consegueInserirTipoDeReceita(){
-        val openHelper=BdReceitasOpenHelper(getAppContext())
-        val bd= openHelper.writableDatabase
+    fun consegueInserirReceita(){
+        val bd=getWritableDataBase()
 
-        val tipoDeReceita = TipoDeReceita("sobremesa")
-        val id = TabelaTipoDeReceitas(bd).insere(tipoDeReceita.toContentValues())
-        assertNotEquals(-1,id)
+        val tipoDeReceita=TipoDeReceita("Entrada")
+        insereTipoDeReceita(bd,tipoDeReceita)
+
+        val receita=Receita("Bacalhau com natas",tipoDeReceita.id, "sobremesa")
+        insereReceita(bd,receita)
     }
+
+    private fun insereReceita(bd:SQLiteDatabase,receita: Receita){
+        receita.id=TabelaReceitas(bd).insere(receita.toContentValues())
+        assertNotEquals(-1,receita.id)
+    }
+
+    fun consegueInserirTipoDeReceita(){
+        val bd = getWritableDataBase()
+
+        val tipoDeReceita = TipoDeReceita("Sobremesa")
+        insereTipoDeReceita(bd, tipoDeReceita)
+    }
+
+    private fun insereTipoDeReceita(
+        bd: SQLiteDatabase,
+        tipoDeReceita: TipoDeReceita
+    ) {
+        tipoDeReceita.id = TabelaTipoDeReceitas(bd).insere(tipoDeReceita.toContentValues())
+        assertNotEquals(-1, tipoDeReceita.id)
+    }
+
+    private fun getWritableDataBase(): SQLiteDatabase {
+        val openHelper = BdReceitasOpenHelper(getAppContext())
+        return openHelper.writableDatabase
+    }
+
     fun consegueAbrirBaseDados(){
         val openHelper=BdReceitasOpenHelper(getAppContext())
         val bd=openHelper.readableDatabase
