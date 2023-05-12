@@ -6,6 +6,6 @@ class Receita (
     var nome:String,
     var id: Long=-1
         ){
-
+    fun
 }
 
