@@ -27,6 +27,14 @@ class BdInstrumentedTest {
         getAppContext().deleteDatabase(BdReceitasOpenHelper.NOME_BASE_DADOS)
     }
     @Test
+    fun consegueInserirTipoDeReceita(){
+        val openHelper=BdReceitasOpenHelper(getAppContext())
+        val bd= openHelper.writableDatabase
+
+        val tipoDeReceita = TipoDeReceita("sobremesa")
+        val id = TabelaTipoDeReceitas(bd).insere(tipoDeReceita.toContentValues())
+        assertNotEquals(-1,id)
+    }
     fun consegueAbrirBaseDados(){
         val openHelper=BdReceitasOpenHelper(getAppContext())
         val bd=openHelper.readableDatabase
