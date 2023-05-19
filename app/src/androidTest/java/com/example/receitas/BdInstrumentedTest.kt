@@ -44,7 +44,7 @@ class BdInstrumentedTest {
         assertNotEquals(-1,receita.id)
     }
 
-
+    @Test
     fun consegueInserirTipoDeReceita(){
         val bd = getWritableDataBase()
 
@@ -64,7 +64,7 @@ class BdInstrumentedTest {
         val openHelper = BdReceitasOpenHelper(getAppContext())
         return openHelper.writableDatabase
     }
-
+    @Test
     fun consegueAbrirBaseDados(){
         val openHelper=BdReceitasOpenHelper(getAppContext())
         val bd=openHelper.readableDatabase
@@ -106,5 +106,112 @@ class BdInstrumentedTest {
         )
 
         assert(cursorTodosTiposDeReceitas.count > 1)
+    }
+    @Test
+    fun consegueLerReceita(){
+        val bd = getWritableDataBase()
+
+        val tipoDeReceita = TipoDeReceita("Pequeno-Almoço")
+        insereTipoDeReceita(bd, tipoDeReceita)
+
+        val tipoDeReceita1 = TipoDeReceita("Almoço")
+        insereTipoDeReceita(bd, tipoDeReceita1)
+
+        val tipoDeReceita2 = TipoDeReceita("Lanche")
+        insereTipoDeReceita(bd, tipoDeReceita2)
+
+        val tabelaTipoDeReceitas = TabelaTipoDeReceitas(bd)
+
+        val cursor = tabelaTipoDeReceitas.consulta(TabelaTipoDeReceitas.CAMPOS, "${BaseColumns._ID}=?",arrayOf(tipoDeReceita1.id.toString()),
+            null,
+            null,
+            null)
+
+        assert(cursor.moveToNext())
+
+        val tipoDeReceitaBD = TipoDeReceita.fromCursor(cursor)
+
+        assertEquals(tipoDeReceita1, tipoDeReceitaBD)
+
+        val cursorTodosTipoDeReceitas = tabelaTipoDeReceitas.consulta(
+            TabelaTipoDeReceitas.CAMPOS,
+            null,
+            null,
+            null,
+            null,
+            TabelaTipoDeReceitas.CAMPO_NOME
+        )
+
+        assert(cursorTodosTipoDeReceitas.count > 1)
+    }
+    @Test
+    fun consegueAlterarTipoDeReceita(){
+        val bd=getWritableDataBase()
+
+        val tipoDeReceita=TipoDeReceita("...")
+        insereTipoDeReceita(bd,tipoDeReceita)
+
+        tipoDeReceita.nome="Aperitivo"
+
+        val registosAlterados=TabelaTipoDeReceitas(bd).altera(
+            tipoDeReceita.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf(tipoDeReceita.id.toString()))
+        assertEquals(1,registosAlterados)
+    }
+    @Test
+    fun consegueAlterarReceita(){
+        val bd=getWritableDataBase()
+
+        val tipoDeReceita=TipoDeReceita("ceia")
+        insereTipoDeReceita(bd,tipoDeReceita)
+
+        val tipoDeReceitaSobremesa=TipoDeReceita("Sobremesa")
+        insereTipoDeReceita(bd,tipoDeReceitaSobremesa)
+
+        val receita= Receita("...",tipoDeReceitaSobremesa.id,"descrição")
+        insereReceita(bd,receita)
+
+        receita.idTipoDeReceita=tipoDeReceitaSobremesa.id
+        receita.nome="Bacalhau"
+
+        val registosAlterados=TabelaReceitas(bd).altera(
+            receita.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf(receita.id.toString()))
+
+        assertEquals(1,registosAlterados)
+
+    }
+    @Test
+    fun consegueApagarTipoDeReceita(){
+        val bd=getWritableDataBase()
+
+        val tipoDeReceita=TipoDeReceita("...")
+        insereTipoDeReceita(bd,tipoDeReceita)
+
+
+        val registosEliminados=TabelaTipoDeReceitas(bd).eliminar(
+            "${BaseColumns._ID}=?",
+            arrayOf(tipoDeReceita.id.toString()))
+
+        assertEquals(1,registosEliminados)
+    }
+
+    @Test
+    fun consegueApagarReceita(){
+        val bd=getWritableDataBase()
+
+        val tipoDeReceita=TipoDeReceita("ceia")
+        insereTipoDeReceita(bd,tipoDeReceita)
+
+        val receita= Receita("...",tipoDeReceita.id,"descrição")
+        insereReceita(bd,receita)
+
+        val registosEliminados=TabelaReceitas(bd).eliminar(
+            "${BaseColumns._ID}=?",
+            arrayOf(receita.id.toString()))
+
+        assertEquals(1,registosEliminados)
     }
 }
