@@ -86,23 +86,24 @@ class BdInstrumentedTest {
         val tipoDeReceitaSobremesa=TipoDeReceita("Sobremesa")
         insereTipoDeReceita(bd,tipoDeReceitaSobremesa)
 
-        val cursor=TabelaReceitas(bd).consulta(TabelaTipoDeReceitas.CAMPOS,
-            "${BaseColumns._ID}=?",
-            arrayOf(tipoDeReceitaSobremesa.id.toString()),
+        val cursorTodosTipoDeReceitas=TabelaReceitas(bd).consulta(
+            TabelaReceitas.CAMPOS,
             null,
             null,
-            null
+            null,
+            null,
+            TabelaReceitas.CAMPO_NOME
         )
-        assert(cursor.moveToNext())
+        assert(cursorTodosTipoDeReceitas.moveToNext())
 
-        val tipoReceitaBD=TipoDeReceita.fromCursor(cursor)
+        val tipoDeReceitaBD=TipoDeReceita.fromCursor(cursorTodosTipoDeReceitas)
 
-        assertEquals(tipoDeReceitaSobremesa,tipoReceitaBD)
+        assertEquals(tipoDeReceitaSobremesa,tipoDeReceitaBD)
 
         val cursorTodosTiposDeReceitas=TabelaTipoDeReceitas(bd).consulta(
-            TabelaTipoDeReceitas.CAMPOS,
+            TabelaReceitas.CAMPOS,
             null,null,null,null,
-            TabelaTipoDeReceitas.CAMPO_NOME
+            TabelaReceitas.CAMPO_NOME
         )
 
         assert(cursorTodosTiposDeReceitas.count > 1)
@@ -122,14 +123,17 @@ class BdInstrumentedTest {
 
         val tabelaTipoDeReceitas = TabelaTipoDeReceitas(bd)
 
-        val cursor = tabelaTipoDeReceitas.consulta(TabelaTipoDeReceitas.CAMPOS, "${BaseColumns._ID}=?",arrayOf(tipoDeReceita1.id.toString()),
+        val cursorTodasReceitas = TabelaReceitas(bd).consulta(
+            TabelaReceitas.CAMPOS,
             null,
             null,
-            null)
+            null,
+            null,
+            TabelaReceitas.CAMPO_NOME)
 
-        assert(cursor.moveToNext())
+        assert(cursorTodasReceitas.moveToNext())
 
-        val tipoDeReceitaBD = TipoDeReceita.fromCursor(cursor)
+        val tipoDeReceitaBD = TipoDeReceita.fromCursor(cursorTodasReceitas)
 
         assertEquals(tipoDeReceita1, tipoDeReceitaBD)
 
