@@ -121,9 +121,6 @@ class BdInstrumentedTest {
         val receita1 = Receita("ovos mexidos",tipoDeReceita.id,"ovos")
         insereReceita(bd, receita1)
 
-        val receita2 = Receita("laranjas",tipoDeReceita.id,"descascadas")
-        insereReceita(bd, receita2)
-
         val tabelaReceitas = TabelaReceitas(bd)
 
         val cursor = tabelaReceitas.consulta(
