@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
+import android.provider.BaseColumns
 
 class ReceitasContentProvider :ContentProvider(){
 
@@ -21,7 +22,30 @@ class ReceitasContentProvider :ContentProvider(){
         selectionArgs: Array<out String>?,
         sortOrder: String?
     ): Cursor? {
-        TODO("Not yet implemented")
+        val bd = bdOpenHelper!!.readableDatabase
+
+        val endereco = uriMatcher().match(uri)
+
+        val tabela = when (endereco) {
+            URI_TIPODERECEITAS, URI_TIPODERECEITAS_ID -> TabelaTipoDeReceitas(bd)
+            URI_RECEITAS, URI_RECEITAS_ID -> TabelaReceitas(bd)
+            else -> null
+        }
+
+        val id = uri.lastPathSegment
+
+        val (selecao,argsSel) = when (endereco) {
+            URI_TIPODERECEITAS_ID, URI_RECEITAS_ID -> Pair("${BaseColumns._ID}=?",arrayOf(id))
+            else -> Pair(selection,selectionArgs)
+        }
+
+        return tabela?.consulta(
+            projection as Array<String>,
+            selection,
+            argsSel as Array<String>?,
+            null,
+            null,
+            sortOrder)
     }
 
     override fun getType(uri: Uri): String? {
@@ -51,12 +75,17 @@ class ReceitasContentProvider :ContentProvider(){
         const val RECEITAS="Receitas"
 
         private const val URI_TIPODERECEITAS=100
+        private const val URI_TIPODERECEITAS_ID=101
         private const val URI_RECEITAS=200
+        private const val URI_RECEITAS_ID=201
 
 
         fun uriMatcher()=UriMatcher(UriMatcher.NO_MATCH).apply {
             addURI(AUTORIDADE, TIPODERECEITAS, URI_TIPODERECEITAS)
+            addURI(AUTORIDADE, "$TIPODERECEITAS/#", URI_TIPODERECEITAS_ID)
             addURI(AUTORIDADE, RECEITAS, URI_RECEITAS)
+            addURI(AUTORIDADE, "$RECEITAS/#", URI_RECEITAS_ID)
+
         }
     }
 }
