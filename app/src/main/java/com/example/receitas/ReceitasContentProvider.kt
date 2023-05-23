@@ -49,7 +49,15 @@ class ReceitasContentProvider :ContentProvider(){
     }
 
     override fun getType(uri: Uri): String? {
-        TODO("Not yet implemented")
+        val endereco = uriMatcher().match(uri)
+
+        return when(endereco){
+            URI_TIPODERECEITAS_ID->"vnd.android.cursor.item/$TIPODERECEITAS"
+            URI_TIPODERECEITAS->"vnd.android.cursor.dir/$TIPODERECEITAS"
+            URI_RECEITAS->"vnd.android.cursor.dir/$RECEITAS"
+            URI_RECEITAS_ID->"vnd.android.cursor.item/$RECEITAS"
+            else->null
+        }
     }
 
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
