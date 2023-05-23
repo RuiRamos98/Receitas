@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.receitas.databinding.FragmentoSobreBinding
+import com.example.receitas.databinding.FragmentSobreBinding
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class Fragmento_sobre : Fragment() {
 
-    private var _binding: FragmentoSobreBinding? = null
+    private var _binding: FragmentSobreBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,7 +24,7 @@ class Fragmento_sobre : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentoSobreBinding.inflate(inflater, container, false)
+        _binding = FragmentSobreBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -33,7 +33,7 @@ class Fragmento_sobre : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            findNavController().navigate(R.id.action_SobreFragment_to_MenuPrincipalFragment)
         }
     }
 

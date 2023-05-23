@@ -2,9 +2,9 @@
     <string name="app_name">Receitas</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="previous">Previous</string>
+    <string name="menu_principal_label">Menu Principal</string>
+    <string name="sobre_fragment_label">Sobre</string>
+    <string name="previous">Voltar</string>
 
     <string name="receitas">Receitas</string>
     <string name="tipo_de_receitas">Tipo de Receitas</string>
