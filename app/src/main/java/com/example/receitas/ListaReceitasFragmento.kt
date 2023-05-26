@@ -14,12 +14,14 @@ import com.example.receitas.databinding.FragmentListaReceitasFragmentoBinding
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
+private const val ID_LOADER_LIVROS=0
+
 /**
  * A simple [Fragment] subclass.
  * Use the [ListaReceitasFragmento.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ListaReceitasFragmento : Fragment(),LoaderManager.LoaderCallbacks<Cursor> {
+class ListaReceitasFragmento : Fragment(),androidx.loader.app.LoaderManager.LoaderCallbacks<Cursor> {
     private var _binding: FragmentListaReceitasFragmentoBinding? = null
 
     // This property is only valid between onCreateView and
@@ -45,21 +47,24 @@ class ListaReceitasFragmento : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
         val adapterReceitas=AdapterReceitas()
         binding.recyclerViewReceitas.adapter=adapterReceitas
         binding.recyclerViewReceitas.layoutManager=LinearLayoutManager(requireContext())
+
+        val loader=androidx.loader.app.LoaderManager.getInstance(this)
+        loader.initLoader(ID_LOADER_LIVROS,null,this)
     }
 
     companion object {
 
     }
 
-    override fun onCreateLoader(p0: Int, p1: Bundle?): Loader<Cursor> {
+    override fun onCreateLoader(id: Int, args: Bundle?): androidx.loader.content.Loader<Cursor> {
         TODO("Not yet implemented")
     }
 
-    override fun onLoaderReset(p0: Loader<Cursor>?) {
+    override fun onLoaderReset(loader: androidx.loader.content.Loader<Cursor>) {
         TODO("Not yet implemented")
     }
 
-    override fun onLoadFinished(p0: Loader<Cursor>?, p1: Cursor?) {
+    override fun onLoadFinished(loader: androidx.loader.content.Loader<Cursor>, data: Cursor?) {
         TODO("Not yet implemented")
     }
 }
