@@ -67,4 +67,9 @@ class ListaReceitasFragmento : Fragment(),androidx.loader.app.LoaderManager.Load
     override fun onLoadFinished(loader: androidx.loader.content.Loader<Cursor>, data: Cursor?) {
         TODO("Not yet implemented")
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
+
 }
