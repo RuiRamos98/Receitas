@@ -14,6 +14,12 @@
         <action
             android:id="@+id/action_MenuPrincipalFragment_to_SobreFragment"
             app:destination="@id/SobreFragment" />
+        <action
+            android:id="@+id/action_MenuPrincipalFragment_to_listaReceitasFragmento"
+            app:destination="@id/listaReceitasFragmento" />
+        <action
+            android:id="@+id/action_MenuPrincipalFragment_to_listaReceitasFragmento2"
+            app:destination="@id/listaReceitasFragmento" />
     </fragment>
     <fragment
         android:id="@+id/SobreFragment"
@@ -23,6 +29,15 @@
 
         <action
             android:id="@+id/action_SobreFragment_to_MenuPrincipalFragment"
+            app:destination="@id/MenuPrincipalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaReceitasFragmento"
+        android:name="com.example.receitas.ListaReceitasFragmento"
+        android:label="fragment_Lista_Receitas_Fragmento_label"
+        tools:layout="@layout/fragment_lista_receitas_fragmento">
+        <action
+            android:id="@+id/action_listaReceitasFragmento_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
     </fragment>
 </navigation>
