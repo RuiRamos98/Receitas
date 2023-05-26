@@ -1,5 +1,8 @@
 package com.example.receitas
 
+import android.app.LoaderManager
+import android.content.Loader
+import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,7 +19,7 @@ import com.example.receitas.databinding.FragmentListaReceitasFragmentoBinding
  * Use the [ListaReceitasFragmento.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ListaReceitasFragmento : Fragment() {
+class ListaReceitasFragmento : Fragment(),LoaderManager.LoaderCallbacks<Cursor> {
     private var _binding: FragmentListaReceitasFragmentoBinding? = null
 
     // This property is only valid between onCreateView and
@@ -46,5 +49,17 @@ class ListaReceitasFragmento : Fragment() {
 
     companion object {
 
+    }
+
+    override fun onCreateLoader(p0: Int, p1: Bundle?): Loader<Cursor> {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLoaderReset(p0: Loader<Cursor>?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLoadFinished(p0: Loader<Cursor>?, p1: Cursor?) {
+        TODO("Not yet implemented")
     }
 }
