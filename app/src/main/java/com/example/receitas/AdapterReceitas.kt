@@ -39,7 +39,7 @@ class AdapterReceitas(val fragment: ListaReceitasFragmento) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ViewHolderReceita, position: Int) {
-        cursor!!.move(position)
+        cursor!!.moveToPosition(position)
         holder.receita=Receita.fromCursor(cursor!!)
     }
 }
