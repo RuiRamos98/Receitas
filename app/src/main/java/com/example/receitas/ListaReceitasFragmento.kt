@@ -42,6 +42,8 @@ class ListaReceitasFragmento : Fragment(),androidx.loader.app.LoaderManager.Load
         return inflater.inflate(R.layout.fragment_lista_receitas_fragmento, container, false)
     }
 
+    private val adapterReceitas= AdapterReceitas()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -72,7 +74,7 @@ class ListaReceitasFragmento : Fragment(),androidx.loader.app.LoaderManager.Load
     }
 
     override fun onLoadFinished(loader: androidx.loader.content.Loader<Cursor>, data: Cursor?) {
-        TODO("Not yet implemented")
+        adapterReceitas.cursor=null
     }
 
     override fun onDestroyView() {
