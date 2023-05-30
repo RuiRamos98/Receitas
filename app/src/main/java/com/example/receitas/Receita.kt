@@ -28,7 +28,7 @@ data class Receita(
 
             val id=cursor.getLong(posId)
             val nome=cursor.getString(posNome)
-            val descricao=cursor.getLong(posDescricao)
+            val descricao=cursor.getString(posDescricao)
             val fkIdTipoDeReceita=cursor.getLong(posFkIdTipoDeReceita)
 
             return Receita(nome,id,descricao.toString(),fkIdTipoDeReceita)

@@ -23,7 +23,7 @@ class AdapterReceitas(val fragment: ListaReceitasFragmento) : RecyclerView.Adapt
         internal var receita:Receita?=null
             set(value){
                 field=value
-                textViewNome.text=receita?.nome
+                textViewNome.text=receita?.nome?:""
                 textViewTipoDeReceita.text=receita?.idTipoDeReceita.toString()?:""
             }
     }

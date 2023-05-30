@@ -115,38 +115,38 @@ class BdInstrumentedTest {
     fun consegueLerReceita(){
         val bd = getWritableDataBase()
 
-        val tipoDeReceita = TipoDeReceita("Almoço")
+        val tipoDeReceita = TipoDeReceita("Pequeno-Almoço")
         insereTipoDeReceita(bd, tipoDeReceita)
 
-        val receita1 = Receita("ovos mexidos",tipoDeReceita.id,"ovos")
-        insereReceita(bd, receita1)
+        val tipoDeReceita1 = TipoDeReceita("Almoço")
+        insereTipoDeReceita(bd, tipoDeReceita1)
 
-        val tabelaReceitas = TabelaReceitas(bd)
+        val tipoDeReceita2 = TipoDeReceita("Lanche")
+        insereTipoDeReceita(bd, tipoDeReceita2)
 
-        val cursor = tabelaReceitas.consulta(
-            TabelaReceitas.CAMPOS,
-            "${BaseColumns._ID}=?",
-            arrayOf(receita1.id.toString()),
+        val tabelaTipoDeReceitas = TabelaTipoDeReceitas(bd)
+
+        val cursor = tabelaTipoDeReceitas.consulta(TabelaTipoDeReceitas.CAMPOS, "${BaseColumns._ID}=?",arrayOf(tipoDeReceita1.id.toString()),
             null,
             null,
             null)
 
         assert(cursor.moveToNext())
 
-        val receitaBD = Receita.fromCursor(cursor)
+        val tipoDeReceitaBD = TipoDeReceita.fromCursor(cursor)
 
-        assertEquals(receita1, receitaBD)
+        assertEquals(tipoDeReceita1, tipoDeReceitaBD)
 
-        val cursorTodasReceitas = tabelaReceitas.consulta(
-            TabelaReceitas.CAMPOS,
+        val cursorTodosTipoDeReceitas = tabelaTipoDeReceitas.consulta(
+            TabelaTipoDeReceitas.CAMPOS,
             null,
             null,
             null,
             null,
-            TabelaReceitas.CAMPO_NOME
+            TabelaTipoDeReceitas.CAMPO_NOME
         )
 
-        assert(cursorTodasReceitas.count > 1)
+        assert(cursorTodosTipoDeReceitas.count > 1)
     }
     @Test
     fun consegueAlterarTipoDeReceita(){
