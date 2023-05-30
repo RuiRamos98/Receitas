@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-class AdapterReceitas: RecyclerView.Adapter<AdapterReceitas.ViewHolderReceita>() {
+class AdapterReceitas(val fragment: ListaReceitasFragmento) : RecyclerView.Adapter<AdapterReceitas.ViewHolderReceita>() {
     var cursor: Cursor? = null
     set(value){
         field =value
@@ -18,7 +18,9 @@ class AdapterReceitas: RecyclerView.Adapter<AdapterReceitas.ViewHolderReceita>()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderReceita {
-        TODO("Not yet implemented")
+        return ViewHolderReceita(
+            fragment.layoutInflater.inflate(R.layout.item_receita,parent,false)
+        )
     }
 
     override fun getItemCount(): Int {

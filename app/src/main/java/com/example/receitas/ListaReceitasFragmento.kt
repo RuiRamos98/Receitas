@@ -1,7 +1,5 @@
 package com.example.receitas
 
-import android.app.LoaderManager
-import android.content.Loader
 import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -42,12 +40,12 @@ class ListaReceitasFragmento : Fragment(),androidx.loader.app.LoaderManager.Load
         return inflater.inflate(R.layout.fragment_lista_receitas_fragmento, container, false)
     }
 
-    private val adapterReceitas= AdapterReceitas()
+    private var adapterReceitas: AdapterReceitas?=null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapterReceitas=AdapterReceitas()
+        adapterReceitas=AdapterReceitas(this)
         binding.recyclerViewReceitas.adapter=adapterReceitas
         binding.recyclerViewReceitas.layoutManager=LinearLayoutManager(requireContext())
 
@@ -74,11 +72,12 @@ class ListaReceitasFragmento : Fragment(),androidx.loader.app.LoaderManager.Load
     }
 
     override fun onLoadFinished(loader: androidx.loader.content.Loader<Cursor>, data: Cursor?) {
-        adapterReceitas.cursor=null
+        adapterReceitas!!.cursor=null
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        _binding=null
     }
 
 }
