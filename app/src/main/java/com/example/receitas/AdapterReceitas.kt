@@ -22,7 +22,7 @@ class AdapterReceitas: RecyclerView.Adapter<AdapterReceitas.ViewHolderReceita>()
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return cursor?.count ?:0
     }
 
     override fun onBindViewHolder(holder: ViewHolderReceita, position: Int) {
