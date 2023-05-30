@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.loader.content.CursorLoader
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.receitas.databinding.FragmentListaReceitasFragmentoBinding
 
@@ -57,7 +58,13 @@ class ListaReceitasFragmento : Fragment(),androidx.loader.app.LoaderManager.Load
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): androidx.loader.content.Loader<Cursor> {
-        TODO("Not yet implemented")
+        return CursorLoader(
+            requireContext(),
+            ReceitasContentProvider.ENDERECO_RECEITA,
+            TabelaReceitas.CAMPOS,
+            null,null,
+            TabelaReceitas.CAMPO_NOME
+        )
     }
 
     override fun onLoaderReset(loader: androidx.loader.content.Loader<Cursor>) {

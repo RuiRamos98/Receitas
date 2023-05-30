@@ -122,6 +122,11 @@ class ReceitasContentProvider :ContentProvider(){
         private const val URI_RECEITAS=200
         private const val URI_RECEITAS_ID=201
 
+        private val ENDERECO_BASE=Uri.parse("content://$AUTORIDADE")
+
+        val ENDERECO_TIPODERECEITA=Uri.withAppendedPath(ENDERECO_BASE, TIPODERECEITAS)
+        val ENDERECO_RECEITA=Uri.withAppendedPath(ENDERECO_BASE, RECEITAS)
+
 
         fun uriMatcher()=UriMatcher(UriMatcher.NO_MATCH).apply {
             addURI(AUTORIDADE, TIPODERECEITAS, URI_TIPODERECEITAS)
