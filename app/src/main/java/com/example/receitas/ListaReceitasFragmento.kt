@@ -41,6 +41,10 @@ class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         _binding = FragmentListaReceitasFragmentoBinding.inflate(inflater, container, false)
         return binding.root
     }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding=null
+    }
 
     private var adapterReceitas: AdapterReceitas?=null
 
@@ -53,10 +57,6 @@ class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
 
         val loader=LoaderManager.getInstance(this)
         loader.initLoader(ID_LOADER_RECEITAS,null,this)
-    }
-
-    companion object {
-
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
@@ -76,10 +76,4 @@ class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         adapterReceitas!!.cursor=data
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding=null
-    }
-
 }

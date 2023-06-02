@@ -6,7 +6,7 @@ import android.provider.BaseColumns
 
 data class Receita(
     var nome:String,
-    var idTipoDeReceita:Long,
+    var tipoDeReceita:TipoDeReceita,
     var descricao: String,
     var id: Long=-1
         ){
@@ -15,7 +15,7 @@ data class Receita(
 
         valores.put(TabelaReceitas.CAMPO_NOME,nome)
         valores.put(TabelaReceitas.CAMPO_DESCRICAO,descricao)
-        valores.put(TabelaReceitas.CAMPO_FK_IDTIPODERECEITA,idTipoDeReceita)
+        valores.put(TabelaReceitas.CAMPO_FK_IDTIPODERECEITA,tipoDeReceita.id)
 
         return valores
     }
@@ -25,13 +25,15 @@ data class Receita(
             val posNome =cursor.getColumnIndex(TabelaReceitas.CAMPO_NOME)
             val posDescricao =cursor.getColumnIndex(TabelaReceitas.CAMPO_DESCRICAO)
             val posFkIdTipoDeReceita =cursor.getColumnIndex(TabelaReceitas.CAMPO_FK_IDTIPODERECEITA)
+            val posNomeTipoDeReceita = cursor.getColumnIndex(TabelaReceitas.CAMPO_NOME_TipoDeReceita)
 
             val id=cursor.getLong(posId)
             val nome=cursor.getString(posNome)
             val descricao=cursor.getString(posDescricao)
             val fkIdTipoDeReceita=cursor.getLong(posFkIdTipoDeReceita)
+            val nomeTipoDeReceita = cursor.getString(posNomeTipoDeReceita)
 
-            return Receita(nome,id,descricao.toString(),fkIdTipoDeReceita)
+            return Receita(nome,TipoDeReceita(nomeTipoDeReceita),descricao.toString(),fkIdTipoDeReceita)
         }
     }
 }

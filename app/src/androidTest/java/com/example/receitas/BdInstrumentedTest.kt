@@ -25,18 +25,20 @@ class BdInstrumentedTest {
 
     @Before
     fun apagaBaseDados(){
-        //
-        getAppContext().deleteDatabase(BdReceitasOpenHelper.NOME_BASE_DADOS)
+        //getAppContext().deleteDatabase(BdReceitasOpenHelper.NOME_BASE_DADOS)
     }
     @Test
     fun consegueInserirReceita(){
         val bd=getWritableDataBase()
 
-        val tipoDeReceita=TipoDeReceita("Entrada")
-        insereTipoDeReceita(bd,tipoDeReceita)
+        val tipoDeReceita = TipoDeReceita("Prato Principal")
+        insereTipoDeReceita(bd, tipoDeReceita)
 
-        val receita=Receita("Bacalhau com natas",tipoDeReceita.id, "sobremesa")
+        val receita=Receita("Feijoada",tipoDeReceita,"Feijão,Arroz")
         insereReceita(bd,receita)
+
+        val receita1=Receita("Bacalhau com natas",tipoDeReceita,"Bacalhau,natas,batata")
+        insereReceita(bd,receita1)
     }
 
     private fun insereReceita(bd:SQLiteDatabase,receita: Receita){
@@ -174,10 +176,10 @@ class BdInstrumentedTest {
         val tipoDeReceitaSobremesa=TipoDeReceita("Sobremesa")
         insereTipoDeReceita(bd,tipoDeReceitaSobremesa)
 
-        val receita= Receita("...",tipoDeReceitaSobremesa.id,"descrição")
+        val receita= Receita("...",tipoDeReceitaSobremesa,"descrição")
         insereReceita(bd,receita)
 
-        receita.idTipoDeReceita=tipoDeReceitaSobremesa.id
+        receita.tipoDeReceita=tipoDeReceitaSobremesa
         receita.nome="Bacalhau"
 
         val registosAlterados=TabelaReceitas(bd).altera(
@@ -210,7 +212,7 @@ class BdInstrumentedTest {
         val tipoDeReceita=TipoDeReceita("ceia")
         insereTipoDeReceita(bd,tipoDeReceita)
 
-        val receita= Receita("...",tipoDeReceita.id,"descrição")
+        val receita= Receita("...",tipoDeReceita,"descrição")
         insereReceita(bd,receita)
 
         val registosEliminados=TabelaReceitas(bd).eliminar(

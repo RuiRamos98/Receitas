@@ -20,13 +20,30 @@ class AdapterReceitas(val fragment: ListaReceitasFragmento) : RecyclerView.Adapt
         private val textViewNome=contentor.findViewById<TextView>(R.id.textViewTipo)
         private val textViewTipoDeReceita=contentor.findViewById<TextView>(R.id.textViewTipoDeReceita)
 
+        init {
+            contentor.setOnClickListener{
+                viewHolderSeleccionado?.desSeleciona()
+                seleciona()
+            }
+        }
+
         internal var receita:Receita?=null
             set(value){
                 field=value
                 textViewNome.text=receita?.nome?:""
-                textViewTipoDeReceita.text=receita?.idTipoDeReceita.toString()?:""
+                textViewTipoDeReceita.text=receita?.tipoDeReceita?.nome?:""
             }
+
+        fun seleciona(){
+            viewHolderSeleccionado = this
+            itemView.setBackgroundResource(R.color.item_selecionado)
+        }
+
+        fun desSeleciona(){
+            itemView.setBackgroundResource(android.R.color.white)
+        }
     }
+        private var viewHolderSeleccionado : ViewHolderReceita? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderReceita {
         return ViewHolderReceita(
