@@ -33,7 +33,7 @@ class AdapterReceitas(val fragment: ListaReceitasFragmento) : RecyclerView.Adapt
                 textViewNome.text=receita?.nome?:""
                 textViewTipoDeReceita.text=receita?.tipoDeReceita?.nome?:""
             }
-
+//
         fun seleciona(){
             viewHolderSeleccionado = this
             itemView.setBackgroundResource(R.color.item_selecionado)
