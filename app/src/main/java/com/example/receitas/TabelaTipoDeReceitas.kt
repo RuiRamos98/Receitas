@@ -11,9 +11,9 @@ class TabelaTipoDeReceitas(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
     companion object{
         const val NOME_TABELA = "TipoDeReceitas"
         const val CAMPO_ID = "${NOME_TABELA}.${BaseColumns._ID}"
-        const val CAMPO_NOME="nome"
+        const val CAMPO_NOME="NomeTipoReceita"
 
-        val CAMPOS = arrayOf(CAMPO_ID, CAMPO_NOME, CAMPO_NOME)
+        val CAMPOS = arrayOf(CAMPO_ID, CAMPO_NOME)
 
 
     }

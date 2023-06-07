@@ -8,7 +8,7 @@ import android.provider.BaseColumns
 
 class TabelaReceitas(db: SQLiteDatabase):TabelaBD(db, NOME_TABELA) {
     override fun cria() {
-        db.execSQL("CREATE TABLE $NOME_TABELA ($CHAVE_TABELA,$CAMPO_NOME TEXT NOT NULL, $CAMPO_DESCRICAO TEXT, $CAMPO_FK_IDTIPODERECEITA INTEGER NOT NULL , FOREIGN KEY(id_TipoDeReceita) REFERENCES ${TabelaTipoDeReceitas.NOME_TABELA}(${BaseColumns._ID}) ON DELETE RESTRICT)")
+        db.execSQL("CREATE TABLE $NOME_TABELA ($CHAVE_TABELA, $CAMPO_NOME TEXT NOT NULL,$CAMPO_DESCRICAO TEXT NOT NULL, $CAMPO_FK_IDTIPODERECEITA INTEGER NOT NULL, FOREIGN KEY ($CAMPO_FK_IDTIPODERECEITA) REFERENCES ${TabelaTipoDeReceitas.NOME_TABELA}(${BaseColumns._ID}) ON DELETE RESTRICT)")
     }
 
     override fun consulta(
@@ -27,12 +27,12 @@ class TabelaReceitas(db: SQLiteDatabase):TabelaBD(db, NOME_TABELA) {
     companion object{
         private const val NOME_TABELA = "Receitas"
         const val CAMPO_ID = "$NOME_TABELA.${BaseColumns._ID}"
-        const val CAMPO_NOME="nome"
+        const val CAMPO_NOME="NomeReceita"
         const val CAMPO_DESCRICAO="descricao"
         const val CAMPO_FK_IDTIPODERECEITA="id_TipoDeReceita"
-        const val CAMPO_NOME_TipoDeReceita = TabelaTipoDeReceitas.CAMPO_ID
-        const val CAMPO_DESC_TipoDeReceita = TabelaTipoDeReceitas.CAMPO_NOME
+        const val CAMPO_NOME_TIPODERECEITA = TabelaTipoDeReceitas.CAMPO_ID
+        const val CAMPO_DESC_TIPODERECEITA = TabelaTipoDeReceitas.CAMPO_NOME
 
-        val CAMPOS = arrayOf(CAMPO_ID, CAMPO_ID, CAMPO_FK_IDTIPODERECEITA, CAMPO_NOME_TipoDeReceita, CAMPO_DESC_TipoDeReceita)
+        val CAMPOS = arrayOf(CAMPO_ID, CAMPO_NOME,CAMPO_DESCRICAO, CAMPO_FK_IDTIPODERECEITA, CAMPO_NOME_TIPODERECEITA, CAMPO_DESC_TIPODERECEITA)
     }
 }

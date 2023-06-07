@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/MenuPrincipalFragment"
         android:name="com.example.receitas.MenuPrincipalFragmento"
-        android:label="@string/menu_principal_label"
+        android:label="@string/fragment_Lista_Receitas_Fragmento_label"
         tools:layout="@layout/fragmento_menu_princiapl">
 
         <action

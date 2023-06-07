@@ -25,7 +25,7 @@ data class Receita(
             val posNome =cursor.getColumnIndex(TabelaReceitas.CAMPO_NOME)
             val posDescricao =cursor.getColumnIndex(TabelaReceitas.CAMPO_DESCRICAO)
             val posFkIdTipoDeReceita =cursor.getColumnIndex(TabelaReceitas.CAMPO_FK_IDTIPODERECEITA)
-            val posNomeTipoDeReceita = cursor.getColumnIndex(TabelaReceitas.CAMPO_NOME_TipoDeReceita)
+            val posNomeTipoDeReceita = cursor.getColumnIndex(TabelaReceitas.CAMPO_NOME_TIPODERECEITA)
 
             val id=cursor.getLong(posId)
             val nome=cursor.getString(posNome)

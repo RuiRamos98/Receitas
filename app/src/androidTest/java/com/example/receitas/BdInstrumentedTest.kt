@@ -25,20 +25,17 @@ class BdInstrumentedTest {
 
     @Before
     fun apagaBaseDados(){
-        //getAppContext().deleteDatabase(BdReceitasOpenHelper.NOME_BASE_DADOS)
+         //getAppContext().deleteDatabase(BdReceitasOpenHelper.NOME_BASE_DADOS)
     }
     @Test
     fun consegueInserirReceita(){
         val bd=getWritableDataBase()
 
-        val tipoDeReceita = TipoDeReceita("Prato Principal")
-        insereTipoDeReceita(bd, tipoDeReceita)
+        val tipoDeReceita=TipoDeReceita("Entrada")
+        insereTipoDeReceita(bd,tipoDeReceita)
 
-        val receita=Receita("Feijoada",tipoDeReceita,"Feijão,Arroz")
+        val receita=Receita("Bacalhau com natas",tipoDeReceita, "sobremesa")
         insereReceita(bd,receita)
-
-        val receita1=Receita("Bacalhau com natas",tipoDeReceita,"Bacalhau,natas,batata")
-        insereReceita(bd,receita1)
     }
 
     private fun insereReceita(bd:SQLiteDatabase,receita: Receita){
@@ -128,7 +125,8 @@ class BdInstrumentedTest {
 
         val tabelaTipoDeReceitas = TabelaTipoDeReceitas(bd)
 
-        val cursor = tabelaTipoDeReceitas.consulta(TabelaTipoDeReceitas.CAMPOS, "${BaseColumns._ID}=?",arrayOf(tipoDeReceita1.id.toString()),
+        val cursor = tabelaTipoDeReceitas.consulta(TabelaTipoDeReceitas.CAMPOS,
+            "${BaseColumns._ID}=?",arrayOf(tipoDeReceita.id.toString()),
             null,
             null,
             null)
@@ -137,7 +135,7 @@ class BdInstrumentedTest {
 
         val tipoDeReceitaBD = TipoDeReceita.fromCursor(cursor)
 
-        assertEquals(tipoDeReceita1, tipoDeReceitaBD)
+        assertEquals(tipoDeReceita, tipoDeReceitaBD)
 
         val cursorTodosTipoDeReceitas = tabelaTipoDeReceitas.consulta(
             TabelaTipoDeReceitas.CAMPOS,
@@ -176,7 +174,7 @@ class BdInstrumentedTest {
         val tipoDeReceitaSobremesa=TipoDeReceita("Sobremesa")
         insereTipoDeReceita(bd,tipoDeReceitaSobremesa)
 
-        val receita= Receita("...",tipoDeReceitaSobremesa,"descrição")
+        val receita= Receita("novoNome",tipoDeReceitaSobremesa,"novaDescricao")
         insereReceita(bd,receita)
 
         receita.tipoDeReceita=tipoDeReceitaSobremesa
