@@ -18,4 +18,7 @@
     <string name="fragment_Lista_Receitas_Fragmento_label">Lista Receitas</string>
     <string name="bacalhau_a_br_s">Bacalhau a Brás</string>
     <string name="prato_principal">Prato Principal</string>
+    <string name="Adicionar">Adicionar</string>
+    <string name="Editar">Editar</string>
+    <string name="Eliminar">Eliminar</string>
 </resources>

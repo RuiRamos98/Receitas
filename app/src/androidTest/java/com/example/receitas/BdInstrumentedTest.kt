@@ -126,7 +126,7 @@ class BdInstrumentedTest {
         val tabelaTipoDeReceitas = TabelaTipoDeReceitas(bd)
 
         val cursor = tabelaTipoDeReceitas.consulta(TabelaTipoDeReceitas.CAMPOS,
-            "${BaseColumns._ID}=?",arrayOf(tipoDeReceita.id.toString()),
+            "${TabelaReceitas.CAMPO_ID}=?",arrayOf(tipoDeReceita.id.toString()),
             null,
             null,
             null)
