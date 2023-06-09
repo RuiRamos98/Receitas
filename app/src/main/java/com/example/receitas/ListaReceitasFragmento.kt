@@ -54,6 +54,7 @@ class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         val loader=LoaderManager.getInstance(this)
         loader.initLoader(ID_LOADER_RECEITAS,null,this)
         val activity = activity as MainActivity
+        activity.fragment = this
         activity.idMenuAtual = R.menu.menu_lista_receitas
     }
 
