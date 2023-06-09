@@ -39,6 +39,8 @@ class MenuPrincipalFragmento : Fragment() {
         binding.buttonReceitas.setOnClickListener {
             findNavController().navigate(R.id.action_MenuPrincipalFragment_to_listaReceitasFragmento)
         }
+        val activity = activity as MainActivity
+        activity.idMenuAtual = R.menu.menu_main
     }
 
     override fun onDestroyView() {
