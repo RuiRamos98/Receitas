@@ -25,7 +25,7 @@ data class Receita(
             val posNome =cursor.getColumnIndex(TabelaReceitas.CAMPO_NOME)
             val posDescricao =cursor.getColumnIndex(TabelaReceitas.CAMPO_DESCRICAO)
             val posFkIdTipoDeReceita =cursor.getColumnIndex(TabelaReceitas.CAMPO_FK_IDTIPODERECEITA)
-            val posNomeTipoDeReceita = cursor.getColumnIndex(TabelaReceitas.CAMPO_NOME_TIPODERECEITA)
+            val posNomeTipoDeReceita = cursor.getColumnIndex(TabelaReceitas.CAMPO_DESC_TIPODERECEITA    )
 
             val id=cursor.getLong(posId)
             val nome=cursor.getString(posNome)
@@ -33,7 +33,7 @@ data class Receita(
             val fkIdTipoDeReceita=cursor.getLong(posFkIdTipoDeReceita)
             val nomeTipoDeReceita = cursor.getString(posNomeTipoDeReceita)
 
-            return Receita(nome,TipoDeReceita(nomeTipoDeReceita),descricao.toString(),fkIdTipoDeReceita)
+            return Receita(nome,TipoDeReceita(descricao),nomeTipoDeReceita,fkIdTipoDeReceita)
         }
     }
 }
