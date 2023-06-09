@@ -1,59 +1,93 @@
 package com.example.receitas
 
+import android.database.Cursor
+import android.opengl.GLES30
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [novaReceita_Fragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class novaReceita_Fragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+import android.widget.SimpleCursorAdapter
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
+import androidx.loader.content.Loader
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.receitas.databinding.FragmentListaReceitasFragmentoBinding
+import com.example.receitas.databinding.FragmentNovaReceitaBinding
+private const val ID_LOADER_TIPODERECEITAS=0
+class novaReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> {
+    private var _binding: FragmentNovaReceitaBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nova_receita_, container, false)
+    ): View {
+        _binding = FragmentNovaReceitaBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.spinnerTipoReceita.adapter=
+
+        val loader=LoaderManager.getInstance(this)
+        loader.initLoader(ID_LOADER_TIPODERECEITAS,null,this)
+
+        val activity = activity as MainActivity
+        activity.fragment = this
+        activity.idMenuAtual = R.menu.menu_guardar_cancelar
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment novaReceita_Fragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            novaReceita_Fragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_guardar -> {
+                guardar()
+                true
             }
+            R.id.action_cancelar -> {
+                cancelar()
+                true
+            }
+            else -> false
+        }
+
+    }
+
+    private fun cancelar() {
+        findNavController().navigate(R.id.action_novaReceita_Fragment_to_listaReceitasFragmento)
+    }
+
+    private fun guardar() {
+        TODO("Not yet implemented")
+    }
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
+        return CursorLoader(
+            requireContext(),
+            ReceitasContentProvider.ENDERECO_TIPODERECEITA,
+            TabelaReceitas.CAMPOS,
+            null,null,
+            TabelaTipoDeReceitas.CAMPO_NOME
+        )
+    }
+
+    override fun onLoaderReset(loader: Loader<Cursor>) {
+        binding.
+    }
+
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+        if(data==null){
+            binding.spinnerTipoReceita.adapter=null
+        }
+        binding.spinnerTipoReceita.adapter=SimpleCursorAdapter{
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            data,
+            arrayOf(TabelaTipoDeReceitas.CAMPO_NOME),
+            intArrayOf(android.R.id.text1),
+            0
+        }
     }
 }
