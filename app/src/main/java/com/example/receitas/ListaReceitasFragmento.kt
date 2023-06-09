@@ -4,6 +4,7 @@ import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
@@ -74,5 +75,35 @@ class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         adapterReceitas!!.cursor=data
+    }
+    fun processaOpcaoMenu(item: MenuItem) : Boolean{
+        return when (item.itemId) {
+            R.id.action_adicionar -> {
+                adicionaReceita()
+                true
+            }
+            R.id.action_editar -> {
+                editarReceita()
+                true
+            }
+            R.id.action_eliminar -> {
+                eliminarReceita()
+                true
+            }
+            else -> false
+        }
+    }
+
+
+
+    private fun adicionaReceita() {
+        TODO("Not yet implemented")
+    }
+    private fun editarReceita() {
+        TODO("Not yet implemented")
+    }
+
+    private fun eliminarReceita() {
+        TODO("Not yet implemented")
     }
 }
