@@ -26,4 +26,8 @@
     <string name="descricaoReceita">Descrição Receita</string>
     <string name="action_guardar">Guardar</string>
     <string name="action_cancelar">Cancelar</string>
+    <string name="nome_obrigatorio">Deve preencher o nome</string>
+    <string name="tipo_de_receita_obrigatorio">Tipo de Receita Obrigatório</string>
+    <string name="n_o_foi_possivel_guardar_receita">Não foi possivel guardar receita</string>
+    <string name="receita_guardada_com_seucesso">Receita guardada com seucesso</string>
 </resources>
