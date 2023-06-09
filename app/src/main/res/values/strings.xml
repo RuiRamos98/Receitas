@@ -22,4 +22,8 @@
     <string name="Editar">Editar</string>
     <string name="Eliminar">Eliminar</string>
     <string name="fragment_nova_receita_">Nova Receita</string>
+    <string name="nomeReceita">Nome Receita</string>
+    <string name="descricaoReceita">Descrição Receita</string>
+    <string name="action_guardar">Guardar</string>
+    <string name="action_cancelar">Cancelar</string>
 </resources>

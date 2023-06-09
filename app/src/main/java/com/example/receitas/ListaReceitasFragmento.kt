@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.receitas.databinding.FragmentListaReceitasFragmentoBinding
 
@@ -105,7 +106,7 @@ class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
 
 
     private fun adicionaReceita() {
-        TODO("Not yet implemented")
+        findNavController().navigate(R.id.action_listaReceitasFragmento_to_novaReceita_Fragment)
     }
     private fun editarReceita() {
         TODO("Not yet implemented")
