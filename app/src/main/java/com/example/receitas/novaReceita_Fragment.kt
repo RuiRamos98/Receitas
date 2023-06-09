@@ -94,7 +94,7 @@ class novaReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> {
         return CursorLoader(
             requireContext(),
             ReceitasContentProvider.ENDERECO_TIPODERECEITA,
-            TabelaReceitas.CAMPOS,
+            TabelaTipoDeReceitas.CAMPOS,
             null,null,
             TabelaTipoDeReceitas.CAMPO_NOME
         )
@@ -107,6 +107,7 @@ class novaReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> {
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         if(data==null){
             binding.spinnerTipoReceita.adapter=null
+            return
         }
         binding.spinnerTipoReceita.adapter=SimpleCursorAdapter(
             requireContext(),
