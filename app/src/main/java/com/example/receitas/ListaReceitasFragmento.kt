@@ -44,6 +44,14 @@ class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
 
     private var adapterReceitas: AdapterReceitas?=null
     var receitaSelecionado:Receita?=null
+        set(value){
+            field = value
+
+            val mostrarEliminarAlterar = (value != null)
+            val activity = activity as MainActivity
+            activity.mostraBotaoMenu(R.id.action_editar,mostrarEliminarAlterar)
+            activity.mostraBotaoMenu(R.id.action_eliminar,mostrarEliminarAlterar)
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
