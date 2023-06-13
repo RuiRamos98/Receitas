@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_MenuPrincipalFragment_to_listaReceitasFragmento2"
             app:destination="@id/listaReceitasFragmento" />
+        <action
+            android:id="@+id/action_MenuPrincipalFragment_to_listaTipoDeReceita"
+            app:destination="@id/listaTipoDeReceita" />
     </fragment>
     <fragment
         android:id="@+id/SobreFragment"
@@ -42,6 +45,9 @@
         <action
             android:id="@+id/action_listaReceitasFragmento_to_novaReceita_Fragment"
             app:destination="@id/novaReceita_Fragment" />
+        <action
+            android:id="@+id/action_listaReceitasFragmento_to_eliminarReceita"
+            app:destination="@id/eliminarReceita" />
     </fragment>
     <fragment
         android:id="@+id/novaReceita_Fragment"
@@ -51,5 +57,28 @@
         <action
             android:id="@+id/action_novaReceita_Fragment_to_listaReceitasFragmento"
             app:destination="@id/listaReceitasFragmento" />
+    </fragment>
+    <fragment
+        android:id="@+id/eliminarReceita"
+        android:name="com.example.receitas.eliminarReceita"
+        android:label="fragment_eliminar_receita"
+        tools:layout="@layout/fragment_eliminar_receita" >
+        <action
+            android:id="@+id/action_eliminarReceita_to_listaReceitasFragmento"
+            app:destination="@id/listaReceitasFragmento" />
+    </fragment>
+    <fragment
+        android:id="@+id/novoTipoDeReceita"
+        android:name="com.example.receitas.novoTipoDeReceita"
+        android:label="fragment_novo_tipo_de_receita"
+        tools:layout="@layout/fragment_novo_tipo_de_receita" />
+    <fragment
+        android:id="@+id/listaTipoDeReceita"
+        android:name="com.example.receitas.listaTipoDeReceita"
+        android:label="fragment_lista_tipo_de_receita"
+        tools:layout="@layout/fragment_lista_tipo_de_receita" >
+        <action
+            android:id="@+id/action_listaTipoDeReceita_to_MenuPrincipalFragment"
+            app:destination="@id/MenuPrincipalFragment" />
     </fragment>
 </navigation>
