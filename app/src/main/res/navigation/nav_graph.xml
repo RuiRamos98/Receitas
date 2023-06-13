@@ -74,7 +74,7 @@
         tools:layout="@layout/fragment_novo_tipo_de_receita" />
     <fragment
         android:id="@+id/listaTipoDeReceita"
-        android:name="com.example.receitas.ListaTipoDeReceita"
+        android:name="com.example.receitas.ListaTipoDeReceitaFragmento"
         android:label="@string/listaTipoDeReceita_label"
         tools:layout="@layout/fragment_lista_tipo_de_receita">
         <action
