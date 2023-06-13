@@ -58,7 +58,7 @@ class novoTipoDeReceita_Fragment : Fragment() {
     }
 
     private fun guardarTipoDeReceita() {
-        TODO("Not yet implemented")
+        findNavController().navigate(R.id.action_listaTipoDeReceita_to_novoTipoDeReceita)
     }
     private fun voltarlistaTipoDeReceitas(){
         findNavController().navigate(R.id.action_novoTipoDeReceita_to_listaTipoDeReceita)
