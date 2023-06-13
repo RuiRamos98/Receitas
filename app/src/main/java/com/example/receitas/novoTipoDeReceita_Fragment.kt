@@ -3,8 +3,10 @@ package com.example.receitas
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.receitas.databinding.FragmentNovoTipoDeReceitaBinding
 
 /**
@@ -33,11 +35,32 @@ class novoTipoDeReceita_Fragment : Fragment() {
 
         val activity = activity as MainActivity
         activity.fragment = this
-        activity.idMenuAtual = R.menu.menu_main
+        activity.idMenuAtual = R.menu.menu_guardar_cancelar
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_guardar -> {
+                guardarTipoDeReceita()
+                true
+            }
+            R.id.action_cancelar -> {
+                voltarlistaTipoDeReceitas()
+                true
+            }
+            else -> false
+        }
+    }
+
+    private fun guardarTipoDeReceita() {
+        TODO("Not yet implemented")
+    }
+    private fun voltarlistaTipoDeReceitas(){
+        findNavController().navigate(R.id.action_novoTipoDeReceita_to_listaTipoDeReceita)
     }
 }

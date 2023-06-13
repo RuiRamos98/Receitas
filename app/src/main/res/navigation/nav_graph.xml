@@ -71,7 +71,11 @@
         android:id="@+id/novoTipoDeReceita"
         android:name="com.example.receitas.novoTipoDeReceita_Fragment"
         android:label="fragment_novo_tipo_de_receita"
-        tools:layout="@layout/fragment_novo_tipo_de_receita" />
+        tools:layout="@layout/fragment_novo_tipo_de_receita" >
+        <action
+            android:id="@+id/action_novoTipoDeReceita_to_listaTipoDeReceita"
+            app:destination="@id/listaTipoDeReceita" />
+    </fragment>
     <fragment
         android:id="@+id/listaTipoDeReceita"
         android:name="com.example.receitas.ListaTipoDeReceitaFragmento"
@@ -80,5 +84,8 @@
         <action
             android:id="@+id/action_listaTipoDeReceita_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
+        <action
+            android:id="@+id/action_listaTipoDeReceita_to_novoTipoDeReceita"
+            app:destination="@id/novoTipoDeReceita" />
     </fragment>
 </navigation>
