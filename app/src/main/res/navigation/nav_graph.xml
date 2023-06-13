@@ -69,7 +69,7 @@
     </fragment>
     <fragment
         android:id="@+id/novoTipoDeReceita"
-        android:name="com.example.receitas.novoTipoDeReceita"
+        android:name="com.example.receitas.novoTipoDeReceita_Fragment"
         android:label="fragment_novo_tipo_de_receita"
         tools:layout="@layout/fragment_novo_tipo_de_receita" />
     <fragment

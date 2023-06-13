@@ -31,4 +31,6 @@
     <string name="n_o_foi_possivel_guardar_receita">Não foi possivel guardar receita</string>
     <string name="receita_guardada_com_seucesso">Receita guardada com seucesso</string>
     <string name="listaTipoDeReceita_label">Tipo De Receita</string>
+    <string name="Nome_TipoDeReceita">Nome</string>
+    <string name="nomeTipoDeReceita">Tipo De Receita</string>
 </resources>
