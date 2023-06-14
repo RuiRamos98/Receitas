@@ -37,4 +37,5 @@
     <string name="imposivel_guardar_tipo_de_receita">Imposivel guardar tipo de receita</string>
     <string name="tipo_de_receita_saved">Tipo de Receita guardada com sucesso</string>
     <string name="NovoTipoDeReceita_Lable">Novo Tipo de Receita</string>
+    <string name="eliminar_label">Eliminar Receita</string>
 </resources>

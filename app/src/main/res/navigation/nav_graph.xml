@@ -58,8 +58,8 @@
     <fragment
         android:id="@+id/eliminarReceita"
         android:name="com.example.receitas.eliminarReceita"
-        android:label="fragment_eliminar_receita"
-        tools:layout="@layout/fragment_eliminar_receita" >
+        android:label="@string/eliminar_label"
+        tools:layout="@layout/fragment_eliminar_receita">
         <action
             android:id="@+id/action_eliminarReceita_to_listaReceitasFragmento"
             app:destination="@id/listaReceitasFragmento" />
