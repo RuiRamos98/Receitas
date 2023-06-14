@@ -18,9 +18,6 @@
             android:id="@+id/action_MenuPrincipalFragment_to_listaReceitasFragmento"
             app:destination="@id/listaReceitasFragmento" />
         <action
-            android:id="@+id/action_MenuPrincipalFragment_to_listaReceitasFragmento2"
-            app:destination="@id/listaReceitasFragmento" />
-        <action
             android:id="@+id/action_MenuPrincipalFragment_to_listaTipoDeReceita"
             app:destination="@id/listaTipoDeReceita" />
     </fragment>

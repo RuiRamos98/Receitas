@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.receitas.databinding.FragmentNovoTipoDeReceitaBinding
 
@@ -58,8 +59,27 @@ class novoTipoDeReceita_Fragment : Fragment() {
     }
 
     private fun guardarTipoDeReceita() {
-        findNavController().navigate(R.id.action_listaTipoDeReceita_to_novoTipoDeReceita)
-    }
+        val nome = binding.editTextTipoDeReceita.text.toString()
+        if (nome.isBlank()) {
+            binding.editTextTipoDeReceita.error = getString(R.string.nomeTR_obrigatorio)
+            binding.editTextTipoDeReceita.requestFocus()
+            return
+        }
+
+        val tipoDeReceita = TipoDeReceita(nome)
+
+        requireActivity().contentResolver.insert(ReceitasContentProvider.ENDERECO_TIPODERECEITA,tipoDeReceita.toContentValues())
+
+        if (id == null){
+            binding.editTextTipoDeReceita.error = getString(R.string.imposivel_guardar_tipo_de_receita)
+            return
+        }
+
+
+        Toast.makeText(requireContext(), getString(R.string.tipo_de_receita_saved), Toast.LENGTH_LONG).show()
+        voltarlistaTipoDeReceitas()
+        }
+
     private fun voltarlistaTipoDeReceitas(){
         findNavController().navigate(R.id.action_novoTipoDeReceita_to_listaTipoDeReceita)
     }
