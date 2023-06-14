@@ -85,4 +85,7 @@
             android:id="@+id/action_listaTipoDeReceita_to_novoTipoDeReceita"
             app:destination="@id/novoTipoDeReceita" />
     </fragment>
+    <argument
+        android:name="receita"
+        app:argType="com.example.receitas.Receita" />
 </navigation>
