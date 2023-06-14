@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/eliminarReceita"
-        android:name="com.example.receitas.eliminarReceita"
+        android:name="com.example.receitas.eliminarReceitaFragmento"
         android:label="@string/eliminar_label"
         tools:layout="@layout/fragment_eliminar_receita">
         <action

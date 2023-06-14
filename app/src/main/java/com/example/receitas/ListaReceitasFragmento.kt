@@ -113,6 +113,6 @@ class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     }
 
     private fun eliminarReceita() {
-        TODO("Not yet implemented")
+        findNavController().navigate(R.id.action_listaReceitasFragmento_to_eliminarReceita)
     }
 }

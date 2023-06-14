@@ -1,7 +1,6 @@
 package com.example.receitas
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
@@ -58,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             is novaReceita_Fragment -> (fragment as novaReceita_Fragment).processaOpcaoMenu(item)
             is ListaTipoDeReceitaFragmento -> (fragment as ListaTipoDeReceitaFragmento).processaOpcaoMenu(item)
             is novoTipoDeReceita_Fragment -> (fragment as novoTipoDeReceita_Fragment).processaOpcaoMenu(item)
+            is eliminarReceitaFragmento -> (fragment as eliminarReceitaFragmento).processaOpcaoMenu(item)
             else -> false
         }
         return if (opcaoProcessada){
