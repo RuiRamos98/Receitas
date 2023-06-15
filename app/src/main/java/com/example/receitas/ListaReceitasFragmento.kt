@@ -113,7 +113,7 @@ class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
 
     private fun eliminarReceita() {
         val acao =
-            ListaReceitasFragmentoDirections.actionListaReceitasFragmentoToEliminarReceita(receitaSelecionado!!)
+            ListaReceitasFragmentoDirections.actionListaReceitasFragmentoToEditarReceitaFragment(null)
         findNavController().navigate(acao)
     }
 }
