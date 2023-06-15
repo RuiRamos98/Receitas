@@ -41,4 +41,5 @@
     <string name="cancelar">Cancelar</string>
     <string name="receita_eliminada_com_sucesso">Receita eliminada com sucesso</string>
     <string name="erro_eliminar_receita">Erro ao eliminar receita</string>
+    <string name="editar_label">Editar Receita</string>
 </resources>

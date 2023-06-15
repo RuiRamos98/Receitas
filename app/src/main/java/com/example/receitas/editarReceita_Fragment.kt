@@ -44,11 +44,24 @@ class editarReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
         val receita = editarReceita_FragmentArgs.fromBundle(requireArguments()).receitas
 
         if (receita != null) {
-            binding.textViewNomeReceita.setText(receita.nome)
-        }
+            activity.atualizaNome(R.string.editar_label)
 
+            binding.textViewNomeReceita.setText(receita.nome)
+        } else {
+            activity.atualizaNome(R.string.fragment_nova_receita_)
+            this.receitas = receita
+
+        }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun voltaListaReceitas() {
+        findNavController().navigate(R.id.action_editarReceita_Fragment_to_listaReceitasFragmento)
+    }
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_guardar -> {
@@ -63,11 +76,6 @@ class editarReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
 
             else -> false
         }
-
-    }
-
-    private fun voltaListaReceitas() {
-        findNavController().navigate(R.id.action_editarReceita_Fragment_to_listaReceitasFragmento)
     }
 
     private fun guardar() {
