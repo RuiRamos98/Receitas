@@ -14,17 +14,17 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
-import com.example.receitas.databinding.FragmentNovaReceitaBinding
+import com.example.receitas.databinding.FragmentEditarReceitaBinding
 private const val ID_LOADER_TIPODERECEITAS=0
 class editarReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> {
-    private var _binding: FragmentNovaReceitaBinding? = null
+    private var _binding: FragmentEditarReceitaBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNovaReceitaBinding.inflate(inflater, container, false)
+        _binding = FragmentEditarReceitaBinding.inflate(inflater, container, false)
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
