@@ -54,6 +54,10 @@
         <action
             android:id="@+id/action_novaReceita_Fragment_to_listaReceitasFragmento"
             app:destination="@id/listaReceitasFragmento" />
+        <argument
+            android:name="receitas"
+            app:argType="com.example.receitas"
+            app:nullable="true"/>
     </fragment>
     <fragment
         android:id="@+id/eliminarReceita"
@@ -63,6 +67,9 @@
         <action
             android:id="@+id/action_eliminarReceita_to_listaReceitasFragmento"
             app:destination="@id/listaReceitasFragmento" />
+        <argument
+            android:name="receitas"
+            app:argType="com.example.receitas" />
     </fragment>
     <fragment
         android:id="@+id/novoTipoDeReceita"

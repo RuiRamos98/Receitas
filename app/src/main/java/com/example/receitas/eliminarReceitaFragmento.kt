@@ -12,6 +12,7 @@ import com.example.receitas.databinding.FragmentEliminarReceitaBinding
 
 class eliminarReceitaFragmento : Fragment() {
 
+    private lateinit var receitas:Receita
     private var _binding: FragmentEliminarReceitaBinding? = null
 
     private val binding get() = _binding!!
@@ -31,6 +32,12 @@ class eliminarReceitaFragmento : Fragment() {
         val activity = activity as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_eliminar
+
+        receitas = eliminarReceitaFragmentoArgs.fromBundle(requireArguments()).noticias
+
+        binding.textViewNomeReceita.text = receitas.nome
+        binding.textViewNomeTipoDeReceita.text = receitas.tipoDeReceita.nome
+
     }
     override fun onDestroyView() {
         super.onDestroyView()

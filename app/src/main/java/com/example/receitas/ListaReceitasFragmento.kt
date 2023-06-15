@@ -14,9 +14,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.receitas.databinding.FragmentListaReceitasFragmentoBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
 private const val ID_LOADER_RECEITAS=0
 
 /**
@@ -113,6 +110,8 @@ class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     }
 
     private fun eliminarReceita() {
-        findNavController().navigate(R.id.action_listaReceitasFragmento_to_eliminarReceita)
+        val acao =
+            ListaReceitasFragmentoDirections.actionListaNoticiasFragmentToEleminarNoticiaFragmento(receitaSelecionado!!)
+        findNavController().navigate(acao)
     }
 }
