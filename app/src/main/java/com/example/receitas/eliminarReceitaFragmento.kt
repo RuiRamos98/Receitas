@@ -36,7 +36,7 @@ class eliminarReceitaFragmento : Fragment() {
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_eliminar
 
-        //receitas = eliminarReceitaFragmentoArgs.fromBundle(requireArguments()).receitas
+        receitas = eliminarReceitaFragmentoArgs.fromBundle(requireArguments()).receitas
 
         binding.textViewNomeReceita.text = receitas.nome
         binding.textViewNomeTipoDeReceita.text = receitas.tipoDeReceita.nome
