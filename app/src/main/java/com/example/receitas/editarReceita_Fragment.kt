@@ -148,7 +148,9 @@ class editarReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        binding.spinnerTipoReceita.adapter = null
+        if (_binding != null) {
+            binding.spinnerTipoReceita.adapter = null
+        }
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {

@@ -76,7 +76,9 @@ class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        adapterReceitas!!.cursor = null
+        if (adapterReceitas != null){
+            adapterReceitas!!.cursor = null
+        }
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
