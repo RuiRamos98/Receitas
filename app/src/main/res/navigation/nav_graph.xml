@@ -48,9 +48,9 @@
     </fragment>
     <fragment
         android:id="@+id/novaReceita_Fragment"
-        android:name="com.example.receitas.novaReceita_Fragment"
+        android:name="com.example.receitas.editarReceita_Fragment"
         android:label="@string/fragment_nova_receita_"
-        tools:layout="@layout/fragment_nova_receita_">
+        tools:layout="@layout/fragment_editar_receita_">
         <action
             android:id="@+id/action_novaReceita_Fragment_to_listaReceitasFragmento"
             app:destination="@id/listaReceitasFragmento" />

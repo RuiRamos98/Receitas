@@ -16,7 +16,7 @@ import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.example.receitas.databinding.FragmentNovaReceitaBinding
 private const val ID_LOADER_TIPODERECEITAS=0
-class novaReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> {
+class editarReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> {
     private var _binding: FragmentNovaReceitaBinding? = null
     private val binding get() = _binding!!
 

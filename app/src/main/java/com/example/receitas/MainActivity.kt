@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         val opcaoProcessada = when (fragment){
             is ListaReceitasFragmento -> (fragment as ListaReceitasFragmento).processaOpcaoMenu(item)
-            is novaReceita_Fragment -> (fragment as novaReceita_Fragment).processaOpcaoMenu(item)
+            is editarReceita_Fragment -> (fragment as editarReceita_Fragment).processaOpcaoMenu(item)
             is ListaTipoDeReceitaFragmento -> (fragment as ListaTipoDeReceitaFragmento).processaOpcaoMenu(item)
             is novoTipoDeReceita_Fragment -> (fragment as novoTipoDeReceita_Fragment).processaOpcaoMenu(item)
             is eliminarReceitaFragmento -> (fragment as eliminarReceitaFragmento).processaOpcaoMenu(item)
