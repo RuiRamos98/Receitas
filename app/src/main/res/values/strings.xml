@@ -39,4 +39,6 @@
     <string name="NovoTipoDeReceita_Lable">Novo Tipo de Receita</string>
     <string name="eliminar_label">Eliminar Receita</string>
     <string name="cancelar">Cancelar</string>
+    <string name="receita_eliminada_com_sucesso">Receita eliminada com sucesso</string>
+    <string name="erro_eliminar_receita">Erro ao eliminar receita</string>
 </resources>

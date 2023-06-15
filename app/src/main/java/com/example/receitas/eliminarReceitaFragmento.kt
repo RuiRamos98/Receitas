@@ -1,13 +1,16 @@
 package com.example.receitas
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.receitas.databinding.FragmentEliminarReceitaBinding
+import com.google.android.material.snackbar.Snackbar
 
 
 class eliminarReceitaFragmento : Fragment() {
@@ -63,6 +66,15 @@ class eliminarReceitaFragmento : Fragment() {
     }
 
     private fun eliminar() {
+        val enderecoReceita = Uri.withAppendedPath(ReceitasContentProvider.ENDERECO_RECEITA, receitas.id.toString())
+        val numReceitaSelecionada = requireActivity().contentResolver.delete(enderecoReceita,null, null)
 
+        if (numReceitaSelecionada == 1){
+            Toast.makeText(requireContext(), getString(R.string.receita_eliminada_com_sucesso), Toast.LENGTH_LONG).show()
+            voltaListaReceitas()
+        } else{
+            Snackbar.make(binding.textViewNomeReceita, getString(R.string.erro_eliminar_receita), Snackbar.LENGTH_INDEFINITE)
+
+        }
     }
 }
