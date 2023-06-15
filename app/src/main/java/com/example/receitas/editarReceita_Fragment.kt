@@ -17,6 +17,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.receitas.databinding.FragmentEditarReceitaBinding
 private const val ID_LOADER_TIPODERECEITAS=0
 class editarReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> {
+
+    private var receitas: Receita? = null
     private var _binding: FragmentEditarReceitaBinding? = null
     private val binding get() = _binding!!
 
@@ -27,15 +29,23 @@ class editarReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
         _binding = FragmentEditarReceitaBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val loader=LoaderManager.getInstance(this)
-        loader.initLoader(ID_LOADER_TIPODERECEITAS,null,this)
+        val loader = LoaderManager.getInstance(this)
+        loader.initLoader(ID_LOADER_TIPODERECEITAS, null, this)
 
         val activity = activity as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_guardar_cancelar
+
+        val receita = editarReceita_FragmentArgs.fromBundle(requireArguments()).receitas
+
+        if (receita != null) {
+            binding.textViewNomeReceita.setText(receita.nome)
+        }
+
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
@@ -44,37 +54,39 @@ class editarReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
                 guardar()
                 true
             }
+
             R.id.action_cancelar -> {
                 voltaListaReceitas()
                 true
             }
+
             else -> false
         }
 
     }
 
     private fun voltaListaReceitas() {
-        findNavController().navigate(R.id.action_novaReceita_Fragment_to_listaReceitasFragmento)
+        findNavController().navigate(R.id.action_editarReceita_Fragment_to_listaReceitasFragmento)
     }
 
     private fun guardar() {
-        val nome=binding.textViewNomeReceita.text.toString()
-        if(nome.isBlank()){
-            binding.textViewNomeReceita.error=getString(R.string.nome_obrigatorio)
+        val nome = binding.textViewNomeReceita.text.toString()
+        if (nome.isBlank()) {
+            binding.textViewNomeReceita.error = getString(R.string.nome_obrigatorio)
             binding.textViewNomeReceita.requestFocus()
             return
         }
 
-        val tipoReceita=binding.spinnerTipoReceita.selectedItemId
-        if(tipoReceita==Spinner.INVALID_ROW_ID){
-            binding.textViewTipoReceita.error=getString(R.string.tipo_de_receita_obrigatorio)
+        val tipoReceita = binding.spinnerTipoReceita.selectedItemId
+        if (tipoReceita == Spinner.INVALID_ROW_ID) {
+            binding.textViewTipoReceita.error = getString(R.string.tipo_de_receita_obrigatorio)
             binding.spinnerTipoReceita.requestFocus()
             return
         }
 
-        val receita=Receita(
+        val receita = Receita(
             nome,
-            TipoDeReceita("?",tipoReceita),
+            TipoDeReceita("?", tipoReceita),
             "?"
         )
 
@@ -87,29 +99,34 @@ class editarReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
             return
         }
 
-        Toast.makeText(requireContext(), getString(R.string.receita_guardada_com_seucesso), Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            requireContext(),
+            getString(R.string.receita_guardada_com_seucesso),
+            Toast.LENGTH_SHORT
+        ).show()
         voltaListaReceitas()
     }
+
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         return CursorLoader(
             requireContext(),
             ReceitasContentProvider.ENDERECO_TIPODERECEITA,
             TabelaTipoDeReceitas.CAMPOS,
-            null,null,
+            null, null,
             TabelaTipoDeReceitas.CAMPO_NOME
         )
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        binding.spinnerTipoReceita.adapter=null
+        binding.spinnerTipoReceita.adapter = null
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        if(data==null){
-            binding.spinnerTipoReceita.adapter=null
+        if (data == null) {
+            binding.spinnerTipoReceita.adapter = null
             return
         }
-        binding.spinnerTipoReceita.adapter=SimpleCursorAdapter(
+        binding.spinnerTipoReceita.adapter = SimpleCursorAdapter(
             requireContext(),
             android.R.layout.simple_list_item_1,
             data,
@@ -117,6 +134,20 @@ class editarReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
             intArrayOf(android.R.id.text1),
             0
         )
+        mostraTipoDeReceitaSelecionadaSpinner()
+    }
 
+    private fun mostraTipoDeReceitaSelecionadaSpinner() {
+        if (receitas == null) return
+
+        val idTipoDeReceita = receitas!!.tipoDeReceita.id
+
+        val ultimoTipoDeReceita = binding.spinnerTipoReceita.count - 1
+        for (i in 0..ultimoTipoDeReceita) {
+            if (idTipoDeReceita == binding.spinnerTipoReceita.getItemIdAtPosition(i)) {
+                binding.spinnerTipoReceita.setSelection(i)
+                return
+            }
+        }
     }
 }

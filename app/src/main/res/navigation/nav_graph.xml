@@ -40,19 +40,19 @@
             android:id="@+id/action_listaReceitasFragmento_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
         <action
-            android:id="@+id/action_listaReceitasFragmento_to_novaReceita_Fragment"
-            app:destination="@id/novaReceita_Fragment" />
+            android:id="@+id/action_listaReceitasFragmento_to_editarReceita_Fragment"
+            app:destination="@id/editarReceita_Fragment" />
         <action
             android:id="@+id/action_listaReceitasFragmento_to_eliminarReceita"
             app:destination="@id/eliminarReceita" />
     </fragment>
     <fragment
-        android:id="@+id/novaReceita_Fragment"
+        android:id="@+id/editarReceita_Fragment"
         android:name="com.example.receitas.editarReceita_Fragment"
         android:label="@string/fragment_nova_receita_"
         tools:layout="@layout/fragment_editar_receita_">
         <action
-            android:id="@+id/action_novaReceita_Fragment_to_listaReceitasFragmento"
+            android:id="@+id/action_editarReceita_Fragment_to_listaReceitasFragmento"
             app:destination="@id/listaReceitasFragmento" />
         <argument
             android:name="receitas"

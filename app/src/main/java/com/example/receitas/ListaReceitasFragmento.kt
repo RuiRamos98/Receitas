@@ -103,7 +103,7 @@ class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
 
 
     private fun adicionaReceita() {
-        findNavController().navigate(R.id.action_listaReceitasFragmento_to_novaReceita_Fragment)
+        findNavController().navigate(R.id.action_listaReceitasFragmento_to_editarReceita_Fragment)
     }
     private fun editarReceita() {
         TODO("Not yet implemented")
