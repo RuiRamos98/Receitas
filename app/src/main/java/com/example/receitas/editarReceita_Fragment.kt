@@ -1,6 +1,7 @@
 package com.example.receitas
 
 import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -78,31 +79,60 @@ class editarReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
         }
 
         val tipoReceita = binding.spinnerTipoReceita.selectedItemId
+
         if (tipoReceita == Spinner.INVALID_ROW_ID) {
             binding.textViewTipoReceita.error = getString(R.string.tipo_de_receita_obrigatorio)
             binding.spinnerTipoReceita.requestFocus()
             return
         }
+        if (receitas == null) {
+            val receita = Receita(
+                "",
+                TipoDeReceita("",tipoReceita),
+                ""
+            )
+            insereReceita(receita)
+        }else{
+            val receita = receitas!!
+            receita.nome = nome
+            receita.tipoDeReceita = TipoDeReceita("?",tipoReceita)
 
-        val receita = Receita(
-            nome,
-            TipoDeReceita("?", tipoReceita),
-            "?"
-        )
+            alteraReceita(receita)
+        }
+    }
+    private fun alteraReceita(
+        receita: Receita
+    ) {
+        val enderecoReceita = Uri.withAppendedPath(ReceitasContentProvider.ENDERECO_RECEITA, receita.id.toString())
+        val receitasAlteradas = requireActivity().contentResolver.update(enderecoReceita, receita.toContentValues(), null,null)
+
+        if(receitasAlteradas == 1){
+            Toast.makeText(requireContext(), R.string.receita_guardada_com_seucesso, Toast.LENGTH_LONG).show()
+            voltaListaReceitas()
+        }else{
+            binding.textViewNomeReceita.error = getString(R.string.n_o_foi_possivel_guardar_receita)
+        }
+    }
+    private fun insereReceita(
+        receita: Receita
+    ){
 
         val id = requireActivity().contentResolver.insert(
             ReceitasContentProvider.ENDERECO_RECEITA,
             receita.toContentValues()
         )
+
+        Toast.makeText(requireContext(), getString(R.string.receita_guardada_com_seucesso), Toast.LENGTH_LONG).show()
         if (id == null) {
-            binding.textViewNomeReceita.error = getString(R.string.n_o_foi_possivel_guardar_receita)
+            binding.textViewNomeReceita.error =
+                getString(R.string.n_o_foi_possivel_guardar_receita)
             return
         }
 
         Toast.makeText(
             requireContext(),
             getString(R.string.receita_guardada_com_seucesso),
-            Toast.LENGTH_SHORT
+            Toast.LENGTH_LONG
         ).show()
         voltaListaReceitas()
     }
