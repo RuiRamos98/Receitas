@@ -47,11 +47,12 @@ class editarReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
             activity.atualizaNome(R.string.editar_label)
 
             binding.textViewNomeReceita.setText(receita.nome)
+            binding.textViewDescricaoReceita.setText(receita.descricao)
         } else {
             activity.atualizaNome(R.string.fragment_nova_receita_)
-            this.receitas = receita
 
         }
+        this.receitas = receita
     }
 
     override fun onDestroyView() {
@@ -87,24 +88,29 @@ class editarReceita_Fragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
             return
         }
 
+        val descricao = binding.textViewDescricaoReceita.text.toString()
+
         val tipoReceita = binding.spinnerTipoReceita.selectedItemId
 
-        if (tipoReceita == Spinner.INVALID_ROW_ID) {
-            binding.textViewTipoReceita.error = getString(R.string.tipo_de_receita_obrigatorio)
-            binding.spinnerTipoReceita.requestFocus()
+        if (nome.isBlank()) {
+            binding.textViewTipoReceita.error = getString(R.string.tipo_de_receita_obrigatoria)
+            binding.textViewTipoReceita.requestFocus()
             return
         }
+
         if (receitas == null) {
             val receita = Receita(
-                "",
+                nome,
                 TipoDeReceita("",tipoReceita),
-                ""
+                descricao
             )
             insereReceita(receita)
         }else{
             val receita = receitas!!
             receita.nome = nome
+            receita.descricao
             receita.tipoDeReceita = TipoDeReceita("?",tipoReceita)
+
 
             alteraReceita(receita)
         }

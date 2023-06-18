@@ -24,23 +24,8 @@ private const val ID_LOADER_RECEITAS=0
 class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private var _binding: FragmentListaReceitasFragmentoBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentListaReceitasFragmentoBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding=null
-    }
-
-    private var adapterReceitas: AdapterReceitas?=null
     var receitaSelecionado:Receita?=null
         set(value){
             field = value
@@ -50,6 +35,22 @@ class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
             activity.mostraBotaoMenu(R.id.action_editar,mostrarEliminarAlterar)
             activity.mostraBotaoMenu(R.id.action_eliminar,mostrarEliminarAlterar)
         }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentListaReceitasFragmentoBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding=null
+    }
+
+    private var adapterReceitas: AdapterReceitas?=null
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -105,15 +106,18 @@ class ListaReceitasFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
 
 
     private fun adicionaReceita() {
-        findNavController().navigate(R.id.action_listaReceitasFragmento_to_editarReceita_Fragment)
+        val acao =
+            ListaReceitasFragmentoDirections.actionListaReceitasFragmentoToEditarReceitaFragment(null)
+        findNavController().navigate(acao)
     }
     private fun editarReceita() {
-        TODO("Not yet implemented")
+        val acao = ListaReceitasFragmentoDirections.actionListaReceitasFragmentoToEditarReceitaFragment(receitaSelecionado!!)
+        findNavController().navigate(acao)
     }
 
     private fun eliminarReceita() {
         val acao =
-            ListaReceitasFragmentoDirections.actionListaReceitasFragmentoToEditarReceitaFragment(null)
+            ListaReceitasFragmentoDirections.actionListaReceitasFragmentoToEliminarReceita(receitaSelecionado!!)
         findNavController().navigate(acao)
     }
 }

@@ -34,8 +34,11 @@ class BdInstrumentedTest {
         val tipoDeReceita=TipoDeReceita("Entrada")
         insereTipoDeReceita(bd,tipoDeReceita)
 
-        val receita=Receita("Bacalhau com natas",tipoDeReceita, "sobremesa")
-        insereReceita(bd,receita)
+        val receita1=Receita("Bacalhau com natas",tipoDeReceita, "sobremesa")
+        insereReceita(bd,receita1)
+
+        val receita2=Receita("Bacalhau com natas1",tipoDeReceita, "sobremesa1")
+        insereReceita(bd,receita2)
     }
 
     private fun insereReceita(bd:SQLiteDatabase,receita: Receita){
@@ -117,36 +120,36 @@ class BdInstrumentedTest {
         val tipoDeReceita = TipoDeReceita("Pequeno-Almoço")
         insereTipoDeReceita(bd, tipoDeReceita)
 
-        val tipoDeReceita1 = TipoDeReceita("Almoço")
-        insereTipoDeReceita(bd, tipoDeReceita1)
+        val receita=Receita("Ovos mexidos",tipoDeReceita,"Ovos,sal")
+        insereReceita(bd,receita)
 
-        val tipoDeReceita2 = TipoDeReceita("Lanche")
-        insereTipoDeReceita(bd, tipoDeReceita2)
+        val receita2=Receita("Ovo estrelado",tipoDeReceita,"Ovos,sal,oleo")
+        insereReceita(bd,receita2)
 
-        val tabelaTipoDeReceitas = TabelaTipoDeReceitas(bd)
-
-        val cursor = tabelaTipoDeReceitas.consulta(TabelaTipoDeReceitas.CAMPOS,
-            "${TabelaReceitas.CAMPO_ID}=?",arrayOf(tipoDeReceita.id.toString()),
+            val cursor = TabelaReceitas(bd).consulta(
+                TabelaReceitas.CAMPOS,
+            "${TabelaReceitas.CAMPO_ID}=?",
+                arrayOf(receita2.id.toString()),
             null,
             null,
             null)
 
         assert(cursor.moveToNext())
 
-        val tipoDeReceitaBD = TipoDeReceita.fromCursor(cursor)
+        val receitaBD = Receita.fromCursor(cursor)
 
-        assertEquals(tipoDeReceita, tipoDeReceitaBD)
+        assertEquals(receita2, receitaBD)
 
-        val cursorTodosTipoDeReceitas = tabelaTipoDeReceitas.consulta(
-            TabelaTipoDeReceitas.CAMPOS,
+        val cursorTodasReceitas = TabelaReceitas(bd).consulta(
+            TabelaReceitas.CAMPOS,
             null,
             null,
             null,
             null,
-            TabelaTipoDeReceitas.CAMPO_NOME
+            TabelaReceitas.CAMPO_NOME
         )
 
-        assert(cursorTodosTipoDeReceitas.count > 1)
+        assert(cursorTodasReceitas.count > 1)
     }
     @Test
     fun consegueAlterarTipoDeReceita(){

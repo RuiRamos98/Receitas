@@ -13,7 +13,7 @@ import com.example.receitas.databinding.FragmentEliminarReceitaBinding
 import com.google.android.material.snackbar.Snackbar
 
 
-class eliminarReceitaFragmento : Fragment() {
+class EliminarReceitaFragmento : Fragment() {
 
     private lateinit var receitas:Receita
     private var _binding: FragmentEliminarReceitaBinding? = null
@@ -36,9 +36,10 @@ class eliminarReceitaFragmento : Fragment() {
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_eliminar
 
-        receitas = eliminarReceitaFragmentoArgs.fromBundle(requireArguments()).receitas
+        receitas = EliminarReceitaFragmentoArgs.fromBundle(requireArguments()).receitas
 
         binding.textViewNomeReceita.text = receitas.nome
+        binding.textViewDescricao.text=receitas.descricao
         binding.textViewNomeTipoDeReceita.text = receitas.tipoDeReceita.nome
 
     }

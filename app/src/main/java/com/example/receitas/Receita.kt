@@ -14,8 +14,8 @@ data class Receita(
         val valores = ContentValues()
 
         valores.put(TabelaReceitas.CAMPO_NOME,nome)
-        valores.put(TabelaReceitas.CAMPO_DESCRICAO,descricao)
         valores.put(TabelaReceitas.CAMPO_FK_IDTIPODERECEITA,tipoDeReceita.id)
+        valores.put(TabelaReceitas.CAMPO_DESCRICAO,descricao)
 
         return valores
     }
@@ -33,7 +33,7 @@ data class Receita(
             val fkIdTipoDeReceita=cursor.getLong(posFkIdTipoDeReceita)
             val nomeTipoDeReceita = cursor.getString(posNomeTipoDeReceita)
 
-            return Receita(nome,TipoDeReceita(descricao),nomeTipoDeReceita,fkIdTipoDeReceita)
+            return Receita(nome,TipoDeReceita(nomeTipoDeReceita,fkIdTipoDeReceita),descricao,id)
         }
     }
 }

@@ -5,37 +5,45 @@
     android:layout_height="match_parent"
     android:layout_margin="8dp"
     android:orientation="vertical"
-    tools:context=".eliminarReceitaFragmento">
+    tools:context=".EliminarReceitaFragmento">
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/nomeReceita"
-        android:textColor="@color/design_default_color_primary" />
+        android:text="@string/nomeReceita" />
 
     <TextView
         android:id="@+id/textViewNomeReceita"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         tools:text="Feijoada" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descrição" />
+
+    <TextView
+        android:id="@+id/textViewDescricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chouriço" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/nomeTipoDeReceita"
-        android:textColor="@color/design_default_color_primary" />
+        android:text="@string/nomeTipoDeReceita" />
 
     <TextView
         android:id="@+id/textView_NomeTipoDeReceita"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         tools:text="Almoço" />
 </LinearLayout>
