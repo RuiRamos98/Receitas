@@ -30,9 +30,8 @@ class TabelaReceitas(db: SQLiteDatabase):TabelaBD(db, NOME_TABELA) {
         const val CAMPO_NOME="NomeReceita"
         const val CAMPO_DESCRICAO="descricao"
         const val CAMPO_FK_IDTIPODERECEITA="id_TipoDeReceita"
-        const val CAMPO_NOME_TIPODERECEITA = TabelaTipoDeReceitas.CAMPO_ID
         const val CAMPO_DESC_TIPODERECEITA = TabelaTipoDeReceitas.CAMPO_NOME
 
-        val CAMPOS = arrayOf(CAMPO_ID, CAMPO_NOME,CAMPO_DESCRICAO, CAMPO_FK_IDTIPODERECEITA,CAMPO_DESC_TIPODERECEITA, CAMPO_NOME_TIPODERECEITA)
+        val CAMPOS = arrayOf(CAMPO_ID, CAMPO_NOME,CAMPO_DESCRICAO, CAMPO_FK_IDTIPODERECEITA,CAMPO_DESC_TIPODERECEITA)
     }
 }

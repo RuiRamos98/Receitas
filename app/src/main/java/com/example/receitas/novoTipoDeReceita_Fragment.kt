@@ -44,6 +44,10 @@ class novoTipoDeReceita_Fragment : Fragment() {
         _binding = null
     }
 
+    private fun voltarlistaTipoDeReceitas(){
+        findNavController().navigate(R.id.action_novoTipoDeReceita_to_listaTipoDeReceita)
+    }
+
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_guardar -> {
@@ -79,8 +83,4 @@ class novoTipoDeReceita_Fragment : Fragment() {
         Toast.makeText(requireContext(), getString(R.string.tipo_de_receita_saved), Toast.LENGTH_LONG).show()
         voltarlistaTipoDeReceitas()
         }
-
-    private fun voltarlistaTipoDeReceitas(){
-        findNavController().navigate(R.id.action_novoTipoDeReceita_to_listaTipoDeReceita)
-    }
 }

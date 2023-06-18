@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.receitas.databinding.FragmentListaTipoDeReceitaBinding
 
@@ -104,6 +105,6 @@ class ListaTipoDeReceitaFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cu
     }
 
     private fun adicionaTipoDeReceita() {
-        TODO("findNavController().navigate(R.id.action_ListaNoticias_Fragment_to_novaNoticia_Fragment)")
+        findNavController().navigate(R.id.action_listaTipoDeReceita_to_novoTipoDeReceita)
     }
 }
