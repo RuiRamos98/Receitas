@@ -43,4 +43,6 @@
     <string name="erro_eliminar_receita">Erro ao eliminar receita</string>
     <string name="editar_label">Editar Receita</string>
     <string name="tipo_de_receita_obrigatoria">Tipo de Receita Obrigatoria</string>
+    <string name="bacalhau_batatapalha">Bacalhau,batataPalha</string>
+    <string name="eliminar_tipo_de_receita_label">Eliminar Tipo de Receita</string>
 </resources>

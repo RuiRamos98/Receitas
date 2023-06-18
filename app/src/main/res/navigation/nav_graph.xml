@@ -73,9 +73,9 @@
     </fragment>
     <fragment
         android:id="@+id/novoTipoDeReceita"
-        android:name="com.example.receitas.novoTipoDeReceita_Fragment"
+        android:name="com.example.receitas.editarTipoDeReceita_Fragment"
         android:label="fragment_novo_tipo_de_receita"
-        tools:layout="@layout/fragment_novo_tipo_de_receita" >
+        tools:layout="@layout/fragment_editar_tipo_de_receita" >
         <action
             android:id="@+id/action_novoTipoDeReceita_to_listaTipoDeReceita"
             app:destination="@id/listaTipoDeReceita" />
@@ -91,5 +91,17 @@
         <action
             android:id="@+id/action_listaTipoDeReceita_to_novoTipoDeReceita"
             app:destination="@id/novoTipoDeReceita" />
+        <action
+            android:id="@+id/action_listaTipoDeReceita_to_fragment_eliminar_tipo_de_receita"
+            app:destination="@id/fragment_eliminar_tipo_de_receita" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_eliminar_tipo_de_receita"
+        android:name="com.example.receitas.fragment_eliminar_tipo_de_receita"
+        android:label="fragment_eliminar_tipo_de_receita"
+        tools:layout="@layout/fragment_eliminar_tipo_de_receita" >
+        <action
+            android:id="@+id/action_fragment_eliminar_tipo_de_receita_to_listaTipoDeReceita"
+            app:destination="@id/listaTipoDeReceita" />
     </fragment>
 </navigation>

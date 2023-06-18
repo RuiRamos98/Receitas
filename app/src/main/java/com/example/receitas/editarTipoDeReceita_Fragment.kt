@@ -12,10 +12,10 @@ import com.example.receitas.databinding.FragmentNovoTipoDeReceitaBinding
 
 /**
  * A simple [Fragment] subclass.
- * Use the [novoTipoDeReceita_Fragment.newInstance] factory method to
+ * Use the [editarTipoDeReceita_Fragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class novoTipoDeReceita_Fragment : Fragment() {
+class editarTipoDeReceita_Fragment : Fragment() {
     private var _binding: FragmentNovoTipoDeReceitaBinding? = null
 
     private val binding get() = _binding!!

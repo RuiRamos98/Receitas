@@ -18,6 +18,7 @@ class AdapterReceitas(val fragment: ListaReceitasFragmento) : RecyclerView.Adapt
 
     inner class ViewHolderReceita(contentor: View) : ViewHolder(contentor) {
         private val textViewNome=contentor.findViewById<TextView>(R.id.textViewTipo)
+        private val textViewDescricao=contentor.findViewById<TextView>(R.id.textViewDescricaoItem)
         private val textViewTipoDeReceita=contentor.findViewById<TextView>(R.id.textViewTipoDeReceita)
 
         init {
@@ -31,6 +32,7 @@ class AdapterReceitas(val fragment: ListaReceitasFragmento) : RecyclerView.Adapt
             set(value){
                 field=value
                 textViewNome.text=receita?.nome?:""
+                textViewDescricao.text=receita?.descricao?:""
                 textViewTipoDeReceita.text=receita?.tipoDeReceita?.nome?:""
             }
 //
