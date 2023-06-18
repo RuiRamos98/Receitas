@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
             is ListaTipoDeReceitaFragmento -> (fragment as ListaTipoDeReceitaFragmento).processaOpcaoMenu(item)
             is editarTipoDeReceita_Fragment -> (fragment as editarTipoDeReceita_Fragment).processaOpcaoMenu(item)
             is EliminarReceitaFragmento -> (fragment as EliminarReceitaFragmento).processaOpcaoMenu(item)
+            is eliminar_tipo_de_receita_fragment -> (fragment as eliminar_tipo_de_receita_fragment).processaOpcaoMenu(item)
             else -> false
         }
         return if (opcaoProcessada){

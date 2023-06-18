@@ -97,7 +97,8 @@ class ListaTipoDeReceitaFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cu
     }
 
     private fun eliminarTipoDeReceita() {
-        TODO("Not yet implemented")
+        val acao = ListaTipoDeReceitaFragmentoDirections.actionListaTipoDeReceitaToFragmentEliminarTipoDeReceita(tipoDeReceitaSelecionado!!)
+        findNavController().navigate(acao)
     }
 
     private fun editarTipoDeReceita() {
@@ -105,6 +106,7 @@ class ListaTipoDeReceitaFragmento : Fragment(), LoaderManager.LoaderCallbacks<Cu
     }
 
     private fun adicionaTipoDeReceita() {
-        findNavController().navigate(R.id.action_listaTipoDeReceita_to_novoTipoDeReceita)
+        val acao = ListaTipoDeReceitaFragmentoDirections.actionListaTipoDeReceitaToNovoTipoDeReceita(null)
+        findNavController().navigate(acao)
     }
 }

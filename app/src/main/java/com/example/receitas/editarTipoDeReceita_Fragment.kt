@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.example.receitas.databinding.FragmentNovoTipoDeReceitaBinding
+import com.example.receitas.databinding.FragmentEditarTipoDeReceitaBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -16,7 +16,7 @@ import com.example.receitas.databinding.FragmentNovoTipoDeReceitaBinding
  * create an instance of this fragment.
  */
 class editarTipoDeReceita_Fragment : Fragment() {
-    private var _binding: FragmentNovoTipoDeReceitaBinding? = null
+    private var _binding: FragmentEditarTipoDeReceitaBinding? = null
 
     private val binding get() = _binding!!
 
@@ -25,7 +25,7 @@ class editarTipoDeReceita_Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentNovoTipoDeReceitaBinding.inflate(inflater, container, false)
+        _binding = FragmentEditarTipoDeReceitaBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -45,7 +45,7 @@ class editarTipoDeReceita_Fragment : Fragment() {
     }
 
     private fun voltarlistaTipoDeReceitas(){
-        findNavController().navigate(R.id.action_novoTipoDeReceita_to_listaTipoDeReceita)
+        findNavController().navigate(R.id.action_editarTipoDeReceita_to_listaTipoDeReceita)
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {

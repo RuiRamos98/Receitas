@@ -77,8 +77,12 @@
         android:label="fragment_novo_tipo_de_receita"
         tools:layout="@layout/fragment_editar_tipo_de_receita" >
         <action
-            android:id="@+id/action_novoTipoDeReceita_to_listaTipoDeReceita"
+            android:id="@+id/action_editarTipoDeReceita_to_listaTipoDeReceita"
             app:destination="@id/listaTipoDeReceita" />
+        <argument
+            android:name="tipoDeReceitas"
+            app:argType="com.example.receitas.TipoDeReceita"
+            app:nullable="true"/>
     </fragment>
     <fragment
         android:id="@+id/listaTipoDeReceita"
@@ -97,11 +101,14 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_eliminar_tipo_de_receita"
-        android:name="com.example.receitas.fragment_eliminar_tipo_de_receita"
+        android:name="com.example.receitas.eliminar_tipo_de_receita_fragment"
         android:label="fragment_eliminar_tipo_de_receita"
         tools:layout="@layout/fragment_eliminar_tipo_de_receita" >
         <action
             android:id="@+id/action_fragment_eliminar_tipo_de_receita_to_listaTipoDeReceita"
             app:destination="@id/listaTipoDeReceita" />
+        <argument
+            android:name="tipoDeReceitas"
+            app:argType="com.example.receitas.TipoDeReceita" />
     </fragment>
 </navigation>
