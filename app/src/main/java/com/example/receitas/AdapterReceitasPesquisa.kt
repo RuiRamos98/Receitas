@@ -7,12 +7,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-class AdapterReceitas(val fragment: ListaReceitasFragmento) : RecyclerView.Adapter<AdapterReceitas.ViewHolderReceita>() {
+class AdapterReceitasPesquisa(val fragment: pesquisa_Fragment) : RecyclerView.Adapter<AdapterReceitasPesquisa.ViewHolderReceita>() {
+
     var cursor: Cursor? = null
-    set(value){
-        field =value
-        notifyDataSetChanged()
-    }
+        set(value){
+            field =value
+            notifyDataSetChanged()
+        }
 
     inner class ViewHolderReceita(contentor: View) : ViewHolder(contentor) {
         private val textViewNome=contentor.findViewById<TextView>(R.id.textViewTipo)
@@ -33,7 +34,7 @@ class AdapterReceitas(val fragment: ListaReceitasFragmento) : RecyclerView.Adapt
                 textViewDescricao.text=receita?.descricao?:""
                 textViewTipoDeReceita.text=receita?.tipoDeReceita?.nome?:""
             }
-//
+        //
         fun seleciona(){
             viewHolderSeleccionado = this
             fragment.receitaSelecionado=receita
@@ -44,7 +45,7 @@ class AdapterReceitas(val fragment: ListaReceitasFragmento) : RecyclerView.Adapt
             itemView.setBackgroundResource(android.R.color.white)
         }
     }
-        private var viewHolderSeleccionado : ViewHolderReceita? = null
+    private var viewHolderSeleccionado : ViewHolderReceita? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderReceita {
         return ViewHolderReceita(
