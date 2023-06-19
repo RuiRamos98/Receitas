@@ -46,7 +46,7 @@ class editarTipoDeReceita_Fragment : Fragment() {
             activity.atualizaNome(R.string.fragment_nova_receita_)
         }
 
-        this.tipoDeReceitas = tipoDeReceitas
+        this.tipoDeReceitas = tipoDeReceita
     }
 
     override fun onDestroyView() {

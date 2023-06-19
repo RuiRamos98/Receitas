@@ -36,8 +36,7 @@ class eliminar_tipo_de_receita_fragment: Fragment() {
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_eliminar
 
-        tipoDeReceita =
-            eliminar_tipo_de_receita_fragmentArgs.fromBundle(requireArguments()).tipoDeReceitas
+        tipoDeReceita = eliminar_tipo_de_receita_fragmentArgs.fromBundle(requireArguments()).tipoDeReceitas
 
         binding.textViewNomeTipoDeReceita.text = tipoDeReceita.nome
     }
@@ -69,7 +68,7 @@ class eliminar_tipo_de_receita_fragment: Fragment() {
 
     private fun eliminarTipoDeReceita() {
         val enderecoTipoDeReceitas = Uri.withAppendedPath(
-            ReceitasContentProvider.ENDERECO_RECEITA,
+            ReceitasContentProvider.ENDERECO_TIPODERECEITA,
             tipoDeReceita.id.toString()
         )
         val numTipoDeReceitasSelecionadas =
