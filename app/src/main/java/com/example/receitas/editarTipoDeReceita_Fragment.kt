@@ -43,7 +43,7 @@ class editarTipoDeReceita_Fragment : Fragment() {
 
             binding.editTextTipoDeReceita.setText(tipoDeReceita.nome)
         } else {
-            activity.atualizaNome(R.string.editar_label)
+            activity.atualizaNome(R.string.fragment_nova_receita_)
         }
 
         this.tipoDeReceitas = tipoDeReceitas

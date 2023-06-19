@@ -13,7 +13,7 @@ class TabelaTipoDeReceitas(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         const val CAMPO_ID = "${NOME_TABELA}.${BaseColumns._ID}"
         const val CAMPO_NOME="NomeTipoReceita"
 
-        val CAMPOS = arrayOf(BaseColumns._ID, CAMPO_NOME)
+        val CAMPOS = arrayOf(CAMPO_ID, CAMPO_NOME)
 
 
     }

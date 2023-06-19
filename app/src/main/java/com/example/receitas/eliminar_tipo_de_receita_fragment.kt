@@ -13,6 +13,7 @@ import com.example.receitas.databinding.FragmentEliminarReceitaBinding
 import com.google.android.material.snackbar.Snackbar
 
 class eliminar_tipo_de_receita_fragment: Fragment() {
+
     private lateinit var tipoDeReceita: TipoDeReceita
     private var _binding: FragmentEliminarReceitaBinding? = null
 
@@ -49,12 +50,12 @@ class eliminar_tipo_de_receita_fragment: Fragment() {
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_eliminar -> {
-                eliminar()
+                eliminarTipoDeReceita()
                 true
             }
 
             R.id.action_cancelar -> {
-                voltaListaCategorias()
+                voltaListaTipoDeReceitas()
                 true
             }
 
@@ -62,25 +63,25 @@ class eliminar_tipo_de_receita_fragment: Fragment() {
         }
     }
 
-    private fun voltaListaCategorias() {
+    private fun voltaListaTipoDeReceitas() {
         findNavController().navigate(R.id.action_fragment_eliminar_tipo_de_receita_to_listaTipoDeReceita)
     }
 
-    private fun eliminar() {
-        val enderecoCategorias = Uri.withAppendedPath(
+    private fun eliminarTipoDeReceita() {
+        val enderecoTipoDeReceitas = Uri.withAppendedPath(
             ReceitasContentProvider.ENDERECO_RECEITA,
             tipoDeReceita.id.toString()
         )
-        val numCategoriaSelecionadas =
-            requireActivity().contentResolver.delete(enderecoCategorias, null, null)
+        val numTipoDeReceitasSelecionadas =
+            requireActivity().contentResolver.delete(enderecoTipoDeReceitas, null, null)
 
-        if (numCategoriaSelecionadas == 1) {
+        if (numTipoDeReceitasSelecionadas == 1) {
             Toast.makeText(
                 requireContext(),
                 getString(R.string.tipo_de_receita_eliminada_com_sucesso),
                 Toast.LENGTH_LONG
             ).show()
-            voltaListaCategorias()
+            voltaListaTipoDeReceitas()
         } else {
             Snackbar.make(
                 binding.textViewNomeTipoDeReceita,
