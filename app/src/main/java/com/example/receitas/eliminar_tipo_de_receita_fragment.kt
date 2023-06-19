@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.receitas.databinding.FragmentEliminarReceitaBinding
+import com.example.receitas.databinding.FragmentEliminarTipoDeReceitaBinding
 import com.google.android.material.snackbar.Snackbar
 
 class eliminar_tipo_de_receita_fragment: Fragment() {
 
     private lateinit var tipoDeReceita: TipoDeReceita
-    private var _binding: FragmentEliminarReceitaBinding? = null
+    private var _binding: FragmentEliminarTipoDeReceitaBinding? = null
 
     private val binding get() = _binding!!
 
@@ -24,7 +24,7 @@ class eliminar_tipo_de_receita_fragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentEliminarReceitaBinding.inflate(inflater, container, false)
+        _binding = FragmentEliminarTipoDeReceitaBinding.inflate(inflater, container, false)
         return binding.root
 
     }
