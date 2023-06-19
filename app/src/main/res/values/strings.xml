@@ -49,4 +49,6 @@
     <string name="erro_ao_eliminar_tipo_de_receita">Erro ao Eliminar Tipo de Receita</string>
     <string name="editar_tipo_de_receita">Editar Tipo de Receita</string>
     <string name="tipo_de_receita_alterada_com_sucesso">Tipo de Receita Alterada com sucesso</string>
+    <string name="receita_pesquisa">Receita a pesquisar</string>
+    <string name="pesquisa_label">Pesquisa</string>
 </resources>

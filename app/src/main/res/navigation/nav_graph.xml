@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_MenuPrincipalFragment_to_SobreFragment"
             app:destination="@id/SobreFragment" />
+        <action
+            android:id="@+id/action_MenuPrincipalFragment_to_pesquisa_Fragment"
+            app:destination="@id/pesquisa_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/SobreFragment"
@@ -109,5 +112,14 @@
         <argument
             android:name="tipoDeReceitas"
             app:argType="com.example.receitas.TipoDeReceita" />
+    </fragment>
+    <fragment
+        android:id="@+id/pesquisa_Fragment"
+        android:name="com.example.receitas.pesquisa_Fragment"
+        android:label="fragment_pesquisa_"
+        tools:layout="@layout/fragment_pesquisa_" >
+        <action
+            android:id="@+id/action_pesquisa_Fragment_to_MenuPrincipalFragment"
+            app:destination="@id/MenuPrincipalFragment" />
     </fragment>
 </navigation>
