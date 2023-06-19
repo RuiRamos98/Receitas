@@ -10,16 +10,15 @@
         android:name="com.example.receitas.MenuPrincipalFragmento"
         android:label="@string/fragment_Lista_Receitas_Fragmento_label"
         tools:layout="@layout/fragmento_menu_princiapl">
-
-        <action
-            android:id="@+id/action_MenuPrincipalFragment_to_SobreFragment"
-            app:destination="@id/SobreFragment" />
         <action
             android:id="@+id/action_MenuPrincipalFragment_to_listaReceitasFragmento"
             app:destination="@id/listaReceitasFragmento" />
         <action
             android:id="@+id/action_MenuPrincipalFragment_to_listaTipoDeReceita"
             app:destination="@id/listaTipoDeReceita" />
+        <action
+            android:id="@+id/action_MenuPrincipalFragment_to_SobreFragment"
+            app:destination="@id/SobreFragment" />
     </fragment>
     <fragment
         android:id="@+id/SobreFragment"
@@ -72,9 +71,9 @@
             app:argType="com.example.receitas.Receita" />
     </fragment>
     <fragment
-        android:id="@+id/novoTipoDeReceita"
+        android:id="@+id/editarTipoDeReceita"
         android:name="com.example.receitas.editarTipoDeReceita_Fragment"
-        android:label="fragment_novo_tipo_de_receita"
+        android:label="fragment_editar_tipo_de_receita"
         tools:layout="@layout/fragment_editar_tipo_de_receita" >
         <action
             android:id="@+id/action_editarTipoDeReceita_to_listaTipoDeReceita"
@@ -93,8 +92,8 @@
             android:id="@+id/action_listaTipoDeReceita_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
         <action
-            android:id="@+id/action_listaTipoDeReceita_to_novoTipoDeReceita"
-            app:destination="@id/novoTipoDeReceita" />
+            android:id="@+id/action_listaTipoDeReceita_to_editarTipoDeReceita"
+            app:destination="@id/editarTipoDeReceita" />
         <action
             android:id="@+id/action_listaTipoDeReceita_to_fragment_eliminar_tipo_de_receita"
             app:destination="@id/fragment_eliminar_tipo_de_receita" />

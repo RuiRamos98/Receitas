@@ -47,4 +47,6 @@
     <string name="eliminar_tipo_de_receita_label">Eliminar Tipo de Receita</string>
     <string name="tipo_de_receita_eliminada_com_sucesso">Tipo de Receita Eliminada com Sucesso</string>
     <string name="erro_ao_eliminar_tipo_de_receita">Erro ao Eliminar Tipo de Receita</string>
+    <string name="editar_tipo_de_receita">Editar Tipo de Receita</string>
+    <string name="tipo_de_receita_alterada_com_sucesso">Tipo de Receita Alterada com sucesso</string>
 </resources>
